@@ -10,16 +10,15 @@
 
 
 <!-- PROJECT LOGO -->
-<br />
+<!-- <br />
 <div align="center">
   <a href="https://github.com/helenamarkus14/soundgarden">
-    <img src="images/logo.png" alt="Logo" width="80" height="80">
-  </a>
+    <img src="" alt="Logo" width="80" height="80">
+  </a> -->
 
 <h3 align="center">Sound Garden</h3>
 
   <p align="center">
-    project_description
     <br />
     <a href="https://github.com/helenamarkus14/soundgarden"><strong>Explore the docs »</strong></a>
     <br />
@@ -64,7 +63,7 @@
 <!-- ABOUT THE PROJECT -->
 ## About The Project
 
-Sound Garden is an application to make playlist currated for upcoming concerts or festivals. 
+Sound Garden is an application to make playlist currated for upcoming concerts or festivals. Connect with Spotify to create actual playlists on your account. 
 
 <!-- [![Product Name Screen Shot][product-screenshot]](https://example.com) -->
 
