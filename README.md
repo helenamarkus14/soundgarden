@@ -117,6 +117,9 @@ Sound Garden is an application to make playlist currated for upcoming concerts o
 <!-- ROADMAP -->
 ## Planning
 
+## Wireframes
+![Wireframes](planning/wireframes.png)
+
 ## User Story
 ![Userstory](planning/user%20story.png)
 ## ERD
