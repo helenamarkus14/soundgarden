@@ -1,6 +1,7 @@
 {
     "name": "@soundgarden/config",
-    "verson": "0.1.0",
+    "verson": "1.0.0",
     "main": "index.js",
-    "license": "MIT"
+    "license": "MIT",
+    "private": true
 }
