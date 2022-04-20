@@ -16,7 +16,9 @@ const routes = require("./routes")
 
 
 /* ==== Configuration ==== */
-const config = require("@soundgarden/config");
+// console.log(require("soundgarden"));
+const config = require("../packages/config");
+
 
 // connect to the MongoDB
 require("./config/database");
