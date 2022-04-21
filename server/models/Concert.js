@@ -23,7 +23,10 @@ const concertSchema = new Schema({
         type: Number,
         required: true,
     },
-    concerts: [{ type: Schema.Types.ObjectId, ref: "Concert" }],
+    venue: {
+        type: String,
+        required: true,
+    },
     playlists: [{ type: Schema.Types.ObjectId, ref: "Playlist" }],
 });
 

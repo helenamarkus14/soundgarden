@@ -3,21 +3,31 @@ const Schema = mongoose.Schema;
 
 
 const userSchema = new Schema({
-    firstName: {
+    display_name: {
         type: String,
         required: true,
         // unique: true,
     },
-    lastName: {
+    external_urls: {
         type: String,
         required: true,
         // unique: true,
     },
-   //email as username
-    email: {
+    href: {
         type: String,
         required: true,
-        unique: true,
+    },
+    id: {
+        type: String,
+        required: true,
+    },
+    type: {
+        type: "user",
+        required: true,
+    },
+    uri: {
+        type: String,
+        required: true,
     },
     concerts: [{ type: Schema.Types.ObjectId, ref: "Concert" }],
     playlists: [{ type: Schema.Types.ObjectId, ref: "Playlist" }],
