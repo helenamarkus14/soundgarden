@@ -30,7 +30,7 @@ app.use(express.urlencoded({ extended: true }));
 app.use(express.json());
 
 /* ====  Routes & Controllers  ==== */
-app.use("/api", routes)
+// app.use("/api", routes)
 
 app.all("/api/*", (req, res, next) =>{
 	res.send("THESE ARE NOT THE APIS YOU ARE LOOKING FOR")
