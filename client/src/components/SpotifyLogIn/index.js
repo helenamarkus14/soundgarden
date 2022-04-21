@@ -13,7 +13,11 @@ function Login() {
     const [token, setToken] = useState("")
     const [searchKey, setSearchKey] = useState("")
     const [artists, setArtists] = useState([])
-
+    const scope = ["playlist-read-collaborative",
+        "playlist-modify-public",
+        "playlist-read-private",
+        "playlist-modify-private", "user-library-modify",
+        "user-library-read"]
     // const getToken = () => {
     //     let urlParams = new URLSearchParams(window.location.hash.replace("#","?"));
     //     let token = urlParams.get('access_token');
@@ -70,7 +74,7 @@ function Login() {
 
             <header className="App-header">
                             {!token ?
-                                <a href={`${AUTH_ENDPOINT}?client_id=${CLIENT_ID}&redirect_uri=${REDIRECT_URI}&response_type=${RESPONSE_TYPE}`}>Login to Spotify</a>
+                                <a href={`${AUTH_ENDPOINT}?client_id=${CLIENT_ID}&redirect_uri=${REDIRECT_URI}&response_type=${RESPONSE_TYPE}&scope=${scope}`}>Login to Spotify</a>
                                 : <button onClick={logout}>Logout</button>}
 
                             {token ?
