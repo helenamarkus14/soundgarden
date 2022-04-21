@@ -6,7 +6,7 @@ const indexConcert = (req, res) => {
     .exec((err, allConcerts) => {
         if(err)
             return res.status(400).json({
-                message: "Failed to get posts",
+                message: "Failed to get concert list",
                 error: err,
             });
             return res.status(200).json({
@@ -22,7 +22,7 @@ const showConcert = (req, res) => {
     .exec((err, foundConcert) => {
         if(err)
             return res.status(400).json({
-                message: "Failed to find a post",
+                message: "Failed to find a concert record",
                 error: err,
             });
             return res.status(200).json({
@@ -107,11 +107,11 @@ const updateConcert = (req, res) => {
         (err, updatedConcert) => {
             if(err)
                 return res.status(400).json({
-                    message: "Failed to update post",
+                    message: "Failed to update concert record",
                     error: err
                 });
                 return res.status(202).json({
-                    message: "Successfully updated a post",
+                    message: "Successfully updated a concert record",
                     data: updatedConcert,
                 });
         }
@@ -123,11 +123,11 @@ const destroyConcert = (req, res) => {
         console.log(req.params.id)
         if(err)
         return res.status(400).json({
-            message: "Failed to delete post",
+            message: "Failed to delete concert record",
             error: err
         });
         return res.status(200).json({
-            message: "Successfully deleted post",
+            message: "Successfully deleted concert record",
             data: deletedConcert,
         });
     });
