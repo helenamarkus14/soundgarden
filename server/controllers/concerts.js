@@ -2,7 +2,7 @@ const db = require("../models")
 
 const indexConcert = (req, res) => {
     db.Concert.find()
-    .populate("user")
+    // .populate("user")
     .exec((err, allConcerts) => {
         if(err)
             return res.status(400).json({
@@ -18,7 +18,7 @@ const indexConcert = (req, res) => {
 
 const showConcert = (req, res) => {
     db.Concert.findById(req.params.id)
-    .populate("user")
+    // .populate("user")
     .exec((err, foundConcert) => {
         if(err)
             return res.status(400).json({
@@ -39,18 +39,18 @@ const createConcert = async (req, res) => {
             artist: req.body.artist,
             month: req.body.month,
             img: req.file.originalname,
-            day: req.file.day,
-            year: req.file.year,
-            venu: req.file.venue,
+            day: req.body.day,
+            year: req.body.year,
+            venue: req.body.venue,
             user: req.userId,
         }
     } else {
         concertData = {
             artist: req.body.artist,
             month: req.body.month,
-            day: req.file.day,
-            year: req.file.year,
-            venu: req.file.venue,
+            day: req.body.day,
+            year: req.body.year,
+            venue: req.body.venue,
             user: req.userId,
         }
     }
@@ -67,8 +67,8 @@ const createConcert = async (req, res) => {
                     message: "Failed to create a concert record",
                     error: err,
                 })
-                foundUser.post.push(savedConcert)
-                foundUser.save()
+                // foundUser.post.push(savedConcert)
+                // foundUser.save()
             })
             return res.status(200).json({
                 message: "Successfully created concert record",
@@ -84,18 +84,18 @@ const updateConcert = (req, res) => {
             artist: req.body.artist,
             month: req.body.month,
             img: req.file.originalname,
-            day: req.file.day,
-            year: req.file.year,
-            venu: req.file.venue,
+            day: req.body.day,
+            year: req.body.year,
+            venue: req.body.venue,
             user: req.userId,
         }
     } else {
         concertData = {
             artist: req.body.artist,
             month: req.body.month,
-            day: req.file.day,
-            year: req.file.year,
-            venu: req.file.venue,
+            day: req.body.day,
+            year: req.body.year,
+            venu: req.body.venue,
             user: req.userId,
         }
     }
