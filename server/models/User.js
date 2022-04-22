@@ -21,10 +21,6 @@ const userSchema = new Schema({
         type: String,
         required: true,
     },
-    type: {
-        type: "user",
-        required: true,
-    },
     uri: {
         type: String,
         required: true,
