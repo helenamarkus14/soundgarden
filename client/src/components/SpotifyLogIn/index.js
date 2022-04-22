@@ -53,7 +53,7 @@ function Login() {
                 Authorization: `Bearer ${token}`
             },
             params: {
-                q: searchKey,
+                user_id: searchKey,
                 type: "artist"
             }
         })

@@ -7,7 +7,7 @@ import './App.css';
 import NavBar from "./components/NavBar";
 import SoundGardenApp from "./pages/SignInPage";
 import Login from "./components/SpotifyLogIn";
-
+import CreatePlaylist from "./components/CreatePlaylist";
 
 function App() {
 
@@ -79,7 +79,7 @@ function App() {
      <Routes>
         <Route path="/" element={<SoundGardenApp />}/>
     </Routes>
-
+    <CreatePlaylist />
     <Login />
 
     </div>
