@@ -1,13 +1,12 @@
 import React from "react";
-import {useEffect, useState} from "react";
-import axios from 'axios'
+
 import {Routes, Route} from "react-router-dom";
 // import logo from './logo.svg';
 import './App.css';
 import NavBar from "./components/NavBar";
 import SoundGardenApp from "./pages/SignInPage";
 import Login from "./components/SpotifyLogIn";
-
+import Search from "./components/SpotifySearch"
 
 function App() {
 
@@ -81,7 +80,7 @@ function App() {
     </Routes>
 
     <Login />
-
+    <Search />
     </div>
   );
 }
