@@ -1,12 +1,12 @@
 import "./spotifylogin.css"
 import { useEffect, useState } from "react";
 import axios from 'axios';
+import * as auth from "../../api/auth.service";
 
 const CLIENT_ID = '86acaba3fb60421f8c54539a7fe7ba83'
 const REDIRECT_URI = 'http://localhost:3000/'
 const AUTH_ENDPOINT = "https://accounts.spotify.com/authorize"
 const RESPONSE_TYPE = "token"
-
 
 
 function Login() {
@@ -28,17 +28,12 @@ function Login() {
         let token = window.localStorage.getItem("token")
 
         // getToken()
-
-
         if (!token && hash) {
             token = hash.substring(1).split("&").find(elem => elem.startsWith("access_token")).split("=")[1]
-
             window.location.hash = ""
             window.localStorage.setItem("token", token)
         }
-
         setToken(token)
-
     }, [])
 
     const logout = () => {
@@ -57,7 +52,6 @@ function Login() {
                 type: "artist"
             }
         })
-
         setArtists(data.artists.items)
     }
 
@@ -85,7 +79,6 @@ function Login() {
 
                                 : <h2>Please login</h2>
                             }
-
                             {renderArtists()}
 
                         </header>
