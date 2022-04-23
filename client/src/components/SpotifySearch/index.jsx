@@ -10,13 +10,14 @@ const RESPONSE_TYPE = "token"
 
 
 
-const Playlist = () => {
+const Search = () => {
     const [token, setToken] = useState("");
     const [userData, setUserData] = useState();
     const [userId, setUserId] = useState();
-    const [userImage, setUserImage] = useState();
- 
-    useEffect(() => {
+    const [searchForKey, setSearchForKey] = useState("");
+    const [artistInfo, setArtistInfo] = useState("");
+
+    const searchBy = () => {
         // const hash = window.location.hash
         // let token = window.localStorage.getItem("token")
         // if (!token && hash) {
@@ -40,31 +41,34 @@ const Playlist = () => {
         }).catch(error => console.log(error))
 
 
-        axios('https://api.spotify.com/v1/users/helenamarkus14', {
-          'method': 'GET',
-          'headers': {
-              'Content-Type': 'application/json',
-              'Accept': 'application/json',
-              'Authorization': 'Bearer ' + token
-          }
+        axios("https://api.spotify.com/v1/search", {
+            'method': 'GET',
+            'headers': {
+                'Content-Type': 'application/json',
+                'Accept': 'application/json',
+                'Authorization': 'Bearer ' + token
+            },
+            params: {
+                q: searchForKey,
+                type: "artist,track"
+            }
         }).then(response=> {
-          setUserData(response);
-          setUserId(response.data.id);
-          setUserImage(response.data.images[0].url);
-          console.log(userData);
-          console.log(userId);
-          console.log(userImage);
-        }).catch(error => console.log(error))
-        // .catch(error => console.log(error));
-    }, []);
+            console.log(response)
+            console.log()
+          }).catch(error => console.log(error))
+          .catch(error => console.log(error));
+        }
 
+
+    
   return (
     <div>
-      <h1>{userId}</h1>
-      <img src={userImage} alt="missing"/>
-
-    </div>
+    <form onSubmit={searchBy}>
+        <input type="text" onChange={e => setSearchForKey(e.target.value)}/>
+             <button type={"submit"}>Search</button>
+     </form>
+     </div>  
   )
-}
+  }
 
-export default Playlist;
+  export default Search;
