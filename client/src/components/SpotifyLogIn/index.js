@@ -1,6 +1,7 @@
 import "./spotifylogin.css"
 import { useEffect, useState } from "react";
 import axios from 'axios';
+import * as auth from "../../api/auth.service";
 
 const CLIENT_ID = '86acaba3fb60421f8c54539a7fe7ba83'
 const REDIRECT_URI = 'http://localhost:3000/'

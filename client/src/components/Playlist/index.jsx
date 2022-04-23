@@ -35,7 +35,7 @@ const Playlist = () => {
             },
             data: 'grant_type=client_credentials'
         }).then(tokenresponse => {
-          // console.log(tokenresponse.data.access_token);
+          console.log(tokenresponse);
           setToken(tokenresponse.data.access_token);
         }).catch(error => console.log(error))
 
