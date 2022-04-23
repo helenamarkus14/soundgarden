@@ -1,34 +1,18 @@
 import React from 'react'
 import { useEffect, useState } from "react";
 import axios from 'axios';
+import * as spotify from "../../api/auth.service"
 import { Buffer } from 'buffer';
-
-const CLIENT_ID = '86acaba3fb60421f8c54539a7fe7ba83'
-const REDIRECT_URI = 'http://localhost:3000/'
-const AUTH_ENDPOINT = "https://accounts.spotify.com/authorize"
-const RESPONSE_TYPE = "token"
-
 
 
 const Search = () => {
     const [token, setToken] = useState("");
-    const [userData, setUserData] = useState();
-    const [userId, setUserId] = useState();
     const [searchForKey, setSearchForKey] = useState("");
     const [artistInfo, setArtistInfo] = useState("");
 
-    const searchBy = () => {
-        // const hash = window.location.hash
-        // let token = window.localStorage.getItem("token")
-        // if (!token && hash) {
-        //     token = hash.substring(1).split("&").find(elem => elem.startsWith("access_token")).split("=")[1]
-        //     window.location.hash = ""
-        //     window.localStorage.setItem("token", token)
-        // }
-        // setToken(token);
-        // console.log(token);
 
-        axios('https://accounts.spotify.com/api/token', {
+    useEffect(() => {
+           axios('https://accounts.spotify.com/api/token', {
             'method': 'POST',
             'headers': {
               'Content-Type':'application/x-www-form-urlencoded',
@@ -36,11 +20,12 @@ const Search = () => {
             },
             data: 'grant_type=client_credentials'
         }).then(tokenresponse => {
-          // console.log(tokenresponse.data.access_token);
           setToken(tokenresponse.data.access_token);
         }).catch(error => console.log(error))
+     }, []);
 
 
+    const searchBy = () => {
         axios("https://api.spotify.com/v1/search", {
             'method': 'GET',
             'headers': {
@@ -50,11 +35,11 @@ const Search = () => {
             },
             params: {
                 q: searchForKey,
-                type: "artist,track"
+                type: "track,artist"
             }
         }).then(response=> {
-            console.log(response)
-            console.log()
+            console.log(response.data.tracks.items[0].external_urls.spotify)
+            
           }).catch(error => console.log(error))
           .catch(error => console.log(error));
         }
@@ -67,6 +52,7 @@ const Search = () => {
         <input type="text" onChange={e => setSearchForKey(e.target.value)}/>
              <button type={"submit"}>Search</button>
      </form>
+     
      </div>  
   )
   }
