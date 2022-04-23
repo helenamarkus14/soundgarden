@@ -14,7 +14,7 @@ const spotifyAuth = axios.create({
 });
 
 
-const spotifyLogin = (tokenresponse) => {
+const spotifyToken = (tokenresponse) => {
     try {
     return spotifyAuth
     .post("/")
@@ -34,5 +34,5 @@ const spotifyLogout = () => {
     localStorage.removeItem("token");
 }
 
-export {spotifyAuth, spotifyLogin, spotifyLogout};
+export {spotifyAuth, spotifyToken, spotifyLogout};
 

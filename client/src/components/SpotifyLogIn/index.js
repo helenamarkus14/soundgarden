@@ -9,7 +9,6 @@ const AUTH_ENDPOINT = "https://accounts.spotify.com/authorize"
 const RESPONSE_TYPE = "token"
 
 
-
 function Login() {
     const [token, setToken] = useState("")
     const [searchKey, setSearchKey] = useState("")
@@ -29,17 +28,12 @@ function Login() {
         let token = window.localStorage.getItem("token")
 
         // getToken()
-
-
         if (!token && hash) {
             token = hash.substring(1).split("&").find(elem => elem.startsWith("access_token")).split("=")[1]
-
             window.location.hash = ""
             window.localStorage.setItem("token", token)
         }
-
         setToken(token)
-
     }, [])
 
     const logout = () => {
@@ -58,7 +52,6 @@ function Login() {
                 type: "artist"
             }
         })
-
         setArtists(data.artists.items)
     }
 
@@ -86,7 +79,6 @@ function Login() {
 
                                 : <h2>Please login</h2>
                             }
-
                             {renderArtists()}
 
                         </header>
