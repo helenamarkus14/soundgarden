@@ -32,7 +32,19 @@ function Login() {
             window.localStorage.setItem("token", token)
         }
         setToken(token)
-        getUserInfo();
+        //get current user info
+        axios('https://api.spotify.com/v1/me', {
+            'method': 'GET',
+            'headers': {
+                'Content-Type': 'application/json',
+                'Accept': 'application/json',
+                'Authorization': 'Bearer ' + token
+            }
+          }).then(response=> {
+            setUserId(response.data.id);
+            setUserImage(response.data.images[0].url);
+            window.localStorage.setItem("id", response.data.id);
+          }).catch(error => console.log(error))
     }, [])
 
     const logout = () => {
@@ -45,20 +57,20 @@ function Login() {
         window.location = `${AUTH_ENDPOINT}?client_id=${CLIENT_ID}&redirect_uri=${REDIRECT_URI}&response_type=${RESPONSE_TYPE}&scope=${scope}`;
     }
 
-    const getUserInfo = () => {
-        axios('https://api.spotify.com/v1/users/deeeezy', {
-                'method': 'GET',
-                'headers': {
-                    'Content-Type': 'application/json',
-                    'Accept': 'application/json',
-                    'Authorization': 'Bearer ' + token
-                }
-              }).then(response=> {
-                setUserId(response.data.id);
-                setUserImage(response.data.images[0].url);
-                window.localStorage.setItem("id", response.data.id);
-              }).catch(error => console.log(error))
-      }
+    // const getUserInfo = () => {
+    //     axios('https://api.spotify.com/v1/me', {
+    //             'method': 'GET',
+    //             'headers': {
+    //                 'Content-Type': 'application/json',
+    //                 'Accept': 'application/json',
+    //                 'Authorization': 'Bearer ' + token
+    //             }
+    //           }).then(response=> {
+    //             setUserId(response.data.id);
+    //             setUserImage(response.data.images[0].url);
+    //             window.localStorage.setItem("id", response.data.id);
+    //           }).catch(error => console.log(error))
+    //   }
 
     const searchArtists = async (e) => {
         e.preventDefault()
