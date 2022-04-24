@@ -3,8 +3,8 @@ import { useEffect, useState } from "react";
 import axios from 'axios';
 import * as auth from "../../api/auth.service";
 
-const CLIENT_ID = '86acaba3fb60421f8c54539a7fe7ba83'
-const REDIRECT_URI = 'http://localhost:3000/'
+const CLIENT_ID = '166cc5375d5442928444b3fc397a5bd7'
+const REDIRECT_URI = 'http://localhost:3000'
 const AUTH_ENDPOINT = "https://accounts.spotify.com/authorize"
 const RESPONSE_TYPE = "token"
 
@@ -13,11 +13,7 @@ function Login() {
     const [token, setToken] = useState("")
     const [searchKey, setSearchKey] = useState("")
     const [artists, setArtists] = useState([])
-    const scope = ["playlist-read-collaborative",
-        "playlist-modify-public",
-        "playlist-read-private",
-        "playlist-modify-private", "user-library-modify",
-        "user-library-read"]
+    const scope = "playlist-read-collaborative playlist-modify-public";
     // const getToken = () => {
     //     let urlParams = new URLSearchParams(window.location.hash.replace("#","?"));
     //     let token = urlParams.get('access_token');
@@ -39,6 +35,10 @@ function Login() {
     const logout = () => {
         setToken("")
         window.localStorage.removeItem("token")
+    }
+
+    const getAuthToken = () => {
+        window.location = `${AUTH_ENDPOINT}?client_id=${CLIENT_ID}&redirect_uri=${REDIRECT_URI}&response_type=${RESPONSE_TYPE}&scope=${scope}`;
     }
 
     const searchArtists = async (e) => {
@@ -65,8 +65,9 @@ function Login() {
     }
 
         return(
-
+            <>
             <header className="App-header">
+                <button onClick={getAuthToken}>GET DA AUTH</button>
                             {!token ?
                                 <a href={`${AUTH_ENDPOINT}?client_id=${CLIENT_ID}&redirect_uri=${REDIRECT_URI}&response_type=${RESPONSE_TYPE}&scope=${scope}`}>Login to Spotify</a>
                                 : <button onClick={logout}>Logout</button>}
@@ -80,8 +81,9 @@ function Login() {
                                 : <h2>Please login</h2>
                             }
                             {renderArtists()}
-
+                            
                         </header>
+                        </>
         );      
 }  
 

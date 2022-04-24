@@ -5,14 +5,21 @@ import * as spotify from "../../api/auth.service"
 import axios from "axios";
 
 
+
 const Playlist = () => {
     const [token, setToken] = useState("");
     const [userData, setUserData] = useState();
+    const [authToken, setAuthToken] = useState();
     const [userId, setUserId] = useState();
     const [userImage, setUserImage] = useState();
     const [playlistName, setPlaylistName] = useState("");
     const [playlistDescription, setPlaylistDescription] = useState("");
     
+    const getAuthToken = () => {
+      let token = localStorage.getItem("token");
+      setAuthToken(token);
+    }
+
     useEffect(() => {
       axios('https://accounts.spotify.com/api/token', {
        'method': 'POST',
@@ -24,6 +31,8 @@ const Playlist = () => {
    }).then(tokenresponse => {
      setToken(tokenresponse.data.access_token);
    }).catch(error => console.log(error))
+   getAuthToken();
+   console.log(authToken);
 }, []);
 
 
@@ -44,17 +53,18 @@ const getUserInfo = () => {
 
 
 const createPlaylist = () => {
+
   axios(`https://api.spotify.com/v1/users/${userId}/playlists`, {
           'method': 'POST',
           'headers': {
               'Content-Type': 'application/json',
-              'Accept': 'application/json',
-              'Authorization': 'Bearer ' + token
+              'Authorization': 'Bearer ' + authToken
           },
-          body: {
-            name: playlistName,
-            description: playlistDescription,
-        }
+          'data': JSON.stringify({
+            'name': playlistName,
+            'description' : playlistDescription
+        }),
+        dataType:'json',
         }).then(response=> {
           console.log(response);
         }).catch(error => console.log(error))
@@ -97,7 +107,7 @@ const createPlaylist = () => {
       <h1>{userId}</h1>
       <img src={userImage} alt="missing"/>
       <button onClick={getUserInfo}>GET USER INFO</button>
-
+      {/* <button onClick={createPlaylist}>Create Playlist</button> */}
       <form onSubmit={createPlaylist}>
         <input placeholder="Playlist Name" type="text" onChange={e => setPlaylistName(e.target.value)}/>
         <input placeholder="Playlist Description" type="text" onChange={e => setPlaylistDescription(e.target.value)}/>
