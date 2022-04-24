@@ -44,12 +44,13 @@ const Search = () => {
                 'Accept': 'application/json',
                 'Authorization': 'Bearer ' + authToken
             },
-            params: {
-                q: searchForKey,
-                type: "track,artist"
+            'params': {
+                'q': searchForKey,
+                'type': "track,artist"
             }
         }).then(response=> {
             console.log(response.data.tracks.items[0].external_urls.spotify)
+            console.log(response);
             
           }).catch(error => console.log(error))
           .catch(error => console.log(error));
@@ -59,10 +60,10 @@ const Search = () => {
     
   return (
     <div>
-    <form onSubmit={searchBy}>
+    
         <input type="text" onChange={e => setSearchForKey(e.target.value)}/>
-             <button type={"submit"}>Search</button>
-     </form>
+             <button onClick={searchBy}>Search</button>
+     
      
      </div>  
   )
