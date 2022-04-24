@@ -1,40 +1,38 @@
 import React from 'react'
 import { useEffect, useState } from "react";
 import axios from 'axios';
-import * as spotify from "../../api/auth.service"
-import { Buffer } from 'buffer';
-
 
 const Search = () => {
     const [authToken, setAuthToken] = useState();
     const [searchForKey, setSearchForKey] = useState("");
-    const [artistInfo, setArtistInfo] = useState("");
-
+    const [artistInfo, setArtistInfo] = useState([]);
+    const [trackInfo, setTrackInfo] = useState([]);
 
     const getInfo = () => {
       let token = localStorage.getItem("token");
       setAuthToken(token);
     }
 
+    const renderArtists = () => {
+      return artistInfo.map(artist => (
+          <div key={artist.id}>
+              {artist.images.length ? <img width={"100%"} src={artist.images[0].url} alt=""/> : <div>No Image</div>}
+              {artist.name}
+          </div>
+      ))
+  }
+
+  const renderTracks = () => {
+    return trackInfo.map(track => (
+      <div key={track.id}>
+          {track.name}
+      </div>
+  ))
+  }
     useEffect(() => {;
     getInfo();
 
   }, []);
-
-
-    // useEffect(() => {
-    //        axios('https://accounts.spotify.com/api/token', {
-    //         'method': 'POST',
-    //         'headers': {
-    //           'Content-Type':'application/x-www-form-urlencoded',
-    //           'Authorization': 'Basic ' + (Buffer('166cc5375d5442928444b3fc397a5bd7' + ':' + 'a4cd7c73faf44197bebf1ebc3d58152d').toString('base64')),
-    //         },
-    //         data: 'grant_type=client_credentials'
-    //     }).then(tokenresponse => {
-    //       setToken(tokenresponse.data.access_token);
-    //     }).catch(error => console.log(error))
-    //  }, []);
-
 
     const searchBy = () => {
         axios("https://api.spotify.com/v1/search", {
@@ -51,7 +49,8 @@ const Search = () => {
         }).then(response=> {
             console.log(response.data.tracks.items[0].external_urls.spotify)
             console.log(response);
-            
+            setArtistInfo(response.data.artists.items);
+            setTrackInfo(response.data.tracks.items);
           }).catch(error => console.log(error))
           .catch(error => console.log(error));
         }
@@ -60,11 +59,10 @@ const Search = () => {
     
   return (
     <div>
-    
         <input type="text" onChange={e => setSearchForKey(e.target.value)}/>
              <button onClick={searchBy}>Search</button>
-     
-     
+             {renderArtists()}
+             {renderTracks()}
      </div>  
   )
   }
