@@ -6,7 +6,8 @@ import './App.css';
 import NavBar from "./components/NavBar";
 import SoundGardenApp from "./pages/SignInPage";
 import Login from "./components/SpotifyLogIn";
-import Search from "./components/SpotifySearch"
+import Search from "./components/SpotifySearch";
+import ConcertPage from "./pages/ConcertPage";
 
 function App() {
 
@@ -74,9 +75,10 @@ function App() {
   return (
     <div className="App">
      <NavBar /> 
-
+      
      <Routes>
         <Route path="/" element={<SoundGardenApp />}/>
+        <Route path="/concerts" element={<ConcertPage />}/>
     </Routes>
 
     <Login />
