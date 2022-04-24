@@ -42,7 +42,7 @@ const createConcert = async (req, res) => {
             day: req.body.day,
             year: req.body.year,
             venue: req.body.venue,
-            user: req.userId,
+            user: req.body.user,
         }
     } else {
         concertData = {
@@ -51,7 +51,7 @@ const createConcert = async (req, res) => {
             day: req.body.day,
             year: req.body.year,
             venue: req.body.venue,
-            user: req.userId,
+            user: req.body.user,
         }
     }
 
@@ -61,15 +61,15 @@ const createConcert = async (req, res) => {
                 message: "Failed to create concert",
                 error: err,
             });
-            db.User.findById(savedConcert.user)
-            .exec((err, foundUser) => {
-                if(err) return res.status(400).json({
-                    message: "Failed to create a concert record",
-                    error: err,
-                })
+            // db.User.findById(savedConcert.user)
+            // .exec((err, foundUser) => {
+            //     if(err) return res.status(400).json({
+            //         message: "Failed to create a concert record",
+            //         error: err,
+            //     })
                 // foundUser.post.push(savedConcert)
                 // foundUser.save()
-            })
+            // })
             return res.status(200).json({
                 message: "Successfully created concert record",
                 data: savedConcert,
