@@ -48,29 +48,12 @@ function Login() {
     }, [])
 
     const logout = () => {
-        setToken("")
+        setToken("");
+        setUserId("");
+        setUserImage("");
         window.localStorage.removeItem("token");
         window.localStorage.removeItem("id");
     }
-
-    const getAuthToken = () => {
-        window.location = `${AUTH_ENDPOINT}?client_id=${CLIENT_ID}&redirect_uri=${REDIRECT_URI}&response_type=${RESPONSE_TYPE}&scope=${scope}`;
-    }
-
-    // const getUserInfo = () => {
-    //     axios('https://api.spotify.com/v1/me', {
-    //             'method': 'GET',
-    //             'headers': {
-    //                 'Content-Type': 'application/json',
-    //                 'Accept': 'application/json',
-    //                 'Authorization': 'Bearer ' + token
-    //             }
-    //           }).then(response=> {
-    //             setUserId(response.data.id);
-    //             setUserImage(response.data.images[0].url);
-    //             window.localStorage.setItem("id", response.data.id);
-    //           }).catch(error => console.log(error))
-    //   }
 
     const searchArtists = async (e) => {
         e.preventDefault()
@@ -99,9 +82,8 @@ function Login() {
             <>
             <h1>Welcome</h1>
              <h1>{userId}</h1>
-        <img src={userImage} alt="missing"/>
+            <img src={userImage} alt="missing"/>
             <header className="App-header">
-                <button onClick={getAuthToken}>GET DA AUTH</button>
                             {!token ?
                                 <a href={`${AUTH_ENDPOINT}?client_id=${CLIENT_ID}&redirect_uri=${REDIRECT_URI}&response_type=${RESPONSE_TYPE}&scope=${scope}`}>Login to Spotify</a>
                                 : <button onClick={logout}>Logout</button>}

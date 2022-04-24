@@ -3,7 +3,7 @@ import * as concertService from "../../api/concert.service"
 
 
 const ConcertForm = () => {
-    const [artistName, setArtistName] = useState("");
+    const [artist, setArtist] = useState("");
     const [month, setMonth] = useState();
     const [day, setDay] = useState();
     const [year, setYear] = useState();
@@ -11,22 +11,17 @@ const ConcertForm = () => {
 
     const handleSubmit = async () => {
 
-        const formData = new FormData();
-        formData.append("artist", artistName);
-        formData.append("month", month)
-        formData.append("day", day);
-        formData.append("year", year);
-        formData.append("venue", venue);
-
-        if (artistName === ""){
+        const data = {artist, month, day, year, venue};
+    
+        if (artist == ""){
 			alert("Please input title")
-		} else if(month === "" || day === "" || year === ""){
+		} else if(month == "" || day == "" || year == ""){
 			alert("Please input date credentials")
-		} else if(venue === "" ){
+		} else if(venue == "" ){
 			alert("Please input venue")
 		} else {
-		let res = await concertService.createConcert(formData).then(() => {
-			setArtistName("");
+		concertService.createConcert(data).then(() => {
+			setArtist("");
 			setMonth("");
 			setDay("");
 			setYear("");
@@ -39,11 +34,11 @@ const ConcertForm = () => {
   return (
     <div>
     <h2>Enter Concert Details</h2>
-        <form encType="multipart/form-data" autoComplete="off">
+        <form autoComplete="off">
             <div>
                 <input
-                    onChange={(e) => setArtistName(e.target.value)}
-                    value={artistName}
+                    onChange={(e) => setArtist(e.target.value)}
+                    value={artist}
                     type="text"
                     name="title"
                     placeholder="Add Artist Name"
