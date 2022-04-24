@@ -5,6 +5,7 @@ const NavBar = () => {
     return(
         <header className='navbar'>
             <NavLink to="/" className='navbarhome'>Home</NavLink>
+            <NavLink to="/concerts" className='navbarhome'>Concerts</NavLink>
         </header>
     );
 };
