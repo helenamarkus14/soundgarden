@@ -15,45 +15,20 @@ const Playlist = () => {
     const [playlistName, setPlaylistName] = useState("");
     const [playlistDescription, setPlaylistDescription] = useState("");
     
-    const getAuthToken = () => {
+    const getInfo = () => {
       let token = localStorage.getItem("token");
+      let id = localStorage.getItem("id");
       setAuthToken(token);
+      setUserId(id);
     }
 
-    useEffect(() => {
-      axios('https://accounts.spotify.com/api/token', {
-       'method': 'POST',
-       'headers': {
-         'Content-Type':'application/x-www-form-urlencoded',
-         'Authorization': 'Basic ' + (Buffer('166cc5375d5442928444b3fc397a5bd7' + ':' + 'a4cd7c73faf44197bebf1ebc3d58152d').toString('base64')),
-       },
-       data: 'grant_type=client_credentials'
-   }).then(tokenresponse => {
-     setToken(tokenresponse.data.access_token);
-   }).catch(error => console.log(error))
-   getAuthToken();
-   console.log(authToken);
-}, []);
-
-
-const getUserInfo = () => {
-  axios('https://api.spotify.com/v1/users/deeeezy', {
-          'method': 'GET',
-          'headers': {
-              'Content-Type': 'application/json',
-              'Accept': 'application/json',
-              'Authorization': 'Bearer ' + token
-          }
-        }).then(response=> {
-          setUserData(response);
-          setUserId(response.data.id);
-          setUserImage(response.data.images[0].url);
-        }).catch(error => console.log(error))
-}
+    useEffect(() => {;
+    getInfo();
+  }, []);
 
 
 const createPlaylist = () => {
-
+  console.log(authToken);
   axios(`https://api.spotify.com/v1/users/${userId}/playlists`, {
           'method': 'POST',
           'headers': {
@@ -70,44 +45,8 @@ const createPlaylist = () => {
         }).catch(error => console.log(error))
 }
 
-    // useEffect(() => {
-    //     axios('https://accounts.spotify.com/api/token', {
-    //         'method': 'POST',
-    //         'headers': {
-    //           'Content-Type':'application/x-www-form-urlencoded',
-    //           'Authorization': 'Basic ' + (Buffer('166cc5375d5442928444b3fc397a5bd7' + ':' + 'a4cd7c73faf44197bebf1ebc3d58152d').toString('base64')),
-    //         },
-    //         data: 'grant_type=client_credentials'
-    //     }).then(tokenresponse => {
-    //       console.log(tokenresponse);
-    //       setToken(tokenresponse.data.access_token);
-    //     }).catch(error => console.log(error))
-
-
-    //     axios('https://api.spotify.com/v1/users/helenamarkus14', {
-    //       'method': 'GET',
-    //       'headers': {
-    //           'Content-Type': 'application/json',
-    //           'Accept': 'application/json',
-    //           'Authorization': 'Bearer ' + token
-    //       }
-    //     }).then(response=> {
-    //       setUserData(response);
-    //       setUserId(response.data.id);
-    //       setUserImage(response.data.images[0].url);
-    //       console.log(userData);
-    //       console.log(userId);
-    //       console.log(userImage);
-    //     }).catch(error => console.log(error))
-    //     // .catch(error => console.log(error));
-    // }, []);
-
   return (
     <div>
-      <h1>{userId}</h1>
-      <img src={userImage} alt="missing"/>
-      <button onClick={getUserInfo}>GET USER INFO</button>
-      {/* <button onClick={createPlaylist}>Create Playlist</button> */}
       <form onSubmit={createPlaylist}>
         <input placeholder="Playlist Name" type="text" onChange={e => setPlaylistName(e.target.value)}/>
         <input placeholder="Playlist Description" type="text" onChange={e => setPlaylistDescription(e.target.value)}/>

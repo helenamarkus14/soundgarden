@@ -12,6 +12,8 @@ const RESPONSE_TYPE = "token"
 function Login() {
     const [token, setToken] = useState("")
     const [searchKey, setSearchKey] = useState("")
+    const [userId, setUserId] = useState();
+    const [userImage, setUserImage] = useState();
     const [artists, setArtists] = useState([])
     const scope = "playlist-read-collaborative playlist-modify-public";
     // const getToken = () => {
@@ -30,16 +32,33 @@ function Login() {
             window.localStorage.setItem("token", token)
         }
         setToken(token)
+        getUserInfo();
     }, [])
 
     const logout = () => {
         setToken("")
-        window.localStorage.removeItem("token")
+        window.localStorage.removeItem("token");
+        window.localStorage.removeItem("id");
     }
 
     const getAuthToken = () => {
         window.location = `${AUTH_ENDPOINT}?client_id=${CLIENT_ID}&redirect_uri=${REDIRECT_URI}&response_type=${RESPONSE_TYPE}&scope=${scope}`;
     }
+
+    const getUserInfo = () => {
+        axios('https://api.spotify.com/v1/users/deeeezy', {
+                'method': 'GET',
+                'headers': {
+                    'Content-Type': 'application/json',
+                    'Accept': 'application/json',
+                    'Authorization': 'Bearer ' + token
+                }
+              }).then(response=> {
+                setUserId(response.data.id);
+                setUserImage(response.data.images[0].url);
+                window.localStorage.setItem("id", response.data.id);
+              }).catch(error => console.log(error))
+      }
 
     const searchArtists = async (e) => {
         e.preventDefault()
@@ -66,6 +85,9 @@ function Login() {
 
         return(
             <>
+            <h1>Welcome</h1>
+             <h1>{userId}</h1>
+        <img src={userImage} alt="missing"/>
             <header className="App-header">
                 <button onClick={getAuthToken}>GET DA AUTH</button>
                             {!token ?
