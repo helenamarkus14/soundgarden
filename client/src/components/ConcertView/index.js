@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react'
-import { useParams } from 'react-router-dom';
+import { useParams, useNavigate } from 'react-router-dom';
 import * as concertService from "../../api/concert.service"
 
 const ConcertView = () =>  {
@@ -10,22 +10,21 @@ const ConcertView = () =>  {
     const [year, setYear] = useState();
     const [venue, setVenue] = useState();
     let {id} = useParams();
+    const navigate = useNavigate();
 
     const handleSubmit = async () => {
 		let data = {artist, month, day, year, venue}
 		
-		let res = await concertService.updateConcert(id, data).then(() => {
-			setArtist("");
-			setMonth("");
-			setDay("");
-            setYear("");
-            setVenue("");
-
+		await concertService.updateConcert(id, data).then(() => {
+            navigate("/concerts");
 		});
-		if (!res === 201) {
-			alert(`Error: ${res.status}`);
-		}
 	};
+
+    const deleteConcert = async () => {
+         await concertService.destroyConcert(id).then(()=> {
+            navigate("/concerts");
+        })
+    }
 
     const getConcertInfo = async () => {
         await concertService.showConcert(id).then((res) => {
@@ -97,7 +96,8 @@ const ConcertView = () =>  {
 
             </div>
 
-            <button onClick={handleSubmit}> Update Set List </button>
+            <button onClick={handleSubmit}> Update Concert </button>
+            <button onClick={deleteConcert}> Delete Concert </button>
         </form>
     </div>
   )

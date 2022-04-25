@@ -92,7 +92,7 @@ const ConcertForm = () => {
                 <h4>Owner: {user}</h4>
             </div>
 
-            <button onClick={handleSubmit}> Create Set List </button>
+            <button onClick={handleSubmit}> Create Concert </button>
         </form>
     </div>
   )
