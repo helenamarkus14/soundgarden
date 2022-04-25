@@ -5,6 +5,10 @@ const indexConcert = () => {
     return apiClient.get("/concerts")
 }
 
+const showConcert = (id) => {
+    return apiClient.get(`/concerts/${id}`)
+}
+
 const createConcert = (data) => {
     return apiClient.post("/concerts", data);
 }
@@ -17,4 +21,4 @@ const destroyConcert = (id) => {
     return apiClient.delete(`/concerts/${id}`);
 }
 
-export {indexConcert, createConcert, updateConcert, destroyConcert};
+export {indexConcert, showConcert, createConcert, updateConcert, destroyConcert};

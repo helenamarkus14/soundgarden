@@ -9,6 +9,7 @@ import Login from "./components/SpotifyLogIn";
 import Search from "./components/SpotifySearch";
 import ConcertPage from "./pages/ConcertPage";
 import PlaylistPage from "./pages/PlaylistPage";
+import ConcertView from "./components/ConcertView";
 
 function App() {
 
@@ -80,6 +81,7 @@ function App() {
      <Routes>
         <Route path="/" element={<SoundGardenApp />}/>
         <Route path="/concerts" element={<ConcertPage />}/>
+        <Route path="/concerts/:id" element={<ConcertView/>}/>
         <Route path="/playlists" element={<PlaylistPage/>}/>
     </Routes>
 

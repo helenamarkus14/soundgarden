@@ -1,101 +1,106 @@
-import React, {useState, useEffect} from 'react'
+import React, { useState, useEffect } from 'react'
+import { useParams } from 'react-router-dom';
 import * as concertService from "../../api/concert.service"
 
-
-const ConcertForm = () => {
-    const [artist, setArtist] = useState("");
+const ConcertView = () =>  {
+    
+    const [artist, setArtist] = useState();
     const [month, setMonth] = useState();
     const [day, setDay] = useState();
     const [year, setYear] = useState();
     const [venue, setVenue] = useState();
-    const [user, setUser] = useState("");
-
-    const getInfo = () => {
-        setUser(localStorage.getItem("id"));
-    }
-
+    let {id} = useParams();
 
     const handleSubmit = async () => {
-
-        const data = {artist, month, day, year, venue, user};
-    
-        if (artist == ""){
-			alert("Please input title")
-		} else if(month == "" || day == "" || year == ""){
-			alert("Please input date credentials")
-		} else if(venue == "" ){
-			alert("Please input venue")
-		} else {
-		concertService.createConcert(data).then(() => {
+		let data = {artist, month, day, year, venue}
+		
+		let res = await concertService.updateConcert(id, data).then(() => {
 			setArtist("");
 			setMonth("");
 			setDay("");
-			setYear("");
+            setYear("");
             setVenue("");
-		});}
 
+		});
+		if (!res === 201) {
+			alert(`Error: ${res.status}`);
+		}
+	};
+
+    const getConcertInfo = async () => {
+        await concertService.showConcert(id).then((res) => {
+            setArtist(res.data.data.artist);
+            setMonth(res.data.data.month);
+            setDay(res.data.data.day);
+            setYear(res.data.data.year);
+            setVenue(res.data.data.venue);
+        })
     }
 
     useEffect(() => {
-        getInfo();
+        getConcertInfo(id);
     }, [])
-    
-
+   
   return (
     <div>
-    <h2>Enter Concert Details</h2>
+        <h2>Update Concert Details</h2>
         <form autoComplete="off">
             <div>
+                <h3>Update Artist Name</h3>
                 <input
                     onChange={(e) => setArtist(e.target.value)}
                     value={artist}
                     type="text"
                     name="title"
-                    placeholder="Add Artist Name"
+                    
                 />
             </div>
             <div>
+                <h3>Update Month</h3>
                 <input
                     onChange={(e) => setMonth(e.target.value)}
                     value={month}
                     type="text"
                     name="month"
-                    placeholder="Month"
+                    
                 />
             </div>
             <div>
+                <h3>Update Day</h3>
                 <input
                     onChange={(e) => setDay(e.target.value)}
                     value={day}
                     type="text"
                     name="day"
-                    placeholder="Day"
+                    
                 />
             </div>
             <div>
+                <h3>Update Year</h3>
                 <input
                     onChange={(e) => setYear(e.target.value)}
                     value={year}
                     type="text"
                     name="year"
-                    placeholder="Year"
+                    
                 />
             </div>
             <div>
+                <h3>Update Venue</h3>
                 <input
                     onChange={(e) => setVenue(e.target.value)}
                     value={venue}
                     type="text"
                     name="venue"
-                    placeholder="Concert Venue"
+                
                 />
-                <h4>Owner: {user}</h4>
+
             </div>
 
-            <button onClick={handleSubmit}> Create Set List </button>
+            <button onClick={handleSubmit}> Update Set List </button>
         </form>
     </div>
   )
 }
 
-export default ConcertForm;
+export default ConcertView

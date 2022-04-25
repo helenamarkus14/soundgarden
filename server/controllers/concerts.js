@@ -87,7 +87,6 @@ const updateConcert = (req, res) => {
             day: req.body.day,
             year: req.body.year,
             venue: req.body.venue,
-            user: req.userId,
         }
     } else {
         concertData = {
@@ -96,7 +95,6 @@ const updateConcert = (req, res) => {
             day: req.body.day,
             year: req.body.year,
             venu: req.body.venue,
-            user: req.userId,
         }
     }
 
