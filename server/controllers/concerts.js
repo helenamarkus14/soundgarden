@@ -1,7 +1,26 @@
 const db = require("../models")
 
+
+
 const indexConcert = (req, res) => {
     db.Concert.find()
+    // .populate("user")
+    .exec((err, allConcerts) => {
+        if(err)
+            return res.status(400).json({
+                message: "Failed to get concert list",
+                error: err,
+            });
+            return res.status(200).json({
+                message: "Successful concert list retrieval",
+                data: allConcerts,
+            });
+        });
+};
+
+
+const userConcerts = (req, res) => {
+    db.Concert.findById(req.params.id)
     // .populate("user")
     .exec((err, allConcerts) => {
         if(err)
@@ -135,6 +154,7 @@ const destroyConcert = (req, res) => {
 
 module.exports = {
     indexConcert,
+    userConcerts,
     showConcert,
     createConcert,
     updateConcert,

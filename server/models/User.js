@@ -8,20 +8,11 @@ const userSchema = new Schema({
         required: true,
         // unique: true,
     },
-    external_urls: {
-        type: String,
-        required: true,
-        // unique: true,
-    },
-    href: {
-        type: String,
-        required: true,
-    },
     id: {
         type: String,
         required: true,
     },
-    uri: {
+    image_url: {
         type: String,
         required: true,
     },
