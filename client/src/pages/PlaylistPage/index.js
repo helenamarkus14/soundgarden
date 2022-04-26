@@ -1,7 +1,6 @@
 import React, {useState, useEffect} from 'react'
 import axios from 'axios';
-
-
+import Playlist from '../../components/Playlist';
 
 
 const PlaylistPage = () => {
@@ -48,6 +47,9 @@ const PlaylistPage = () => {
         <h2>{userId}'s Playlists</h2>
         <button onClick={getPlaylists}>Get My Playlists</button>
         {renderPlaylists()}
+        <div className="flex-auto">
+            <Playlist />
+        </div>
     </div>
   )
 }

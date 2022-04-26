@@ -9,6 +9,7 @@ import Login from "./components/SpotifyLogIn";
 import Search from "./components/SpotifySearch";
 import ConcertPage from "./pages/ConcertPage";
 import PlaylistPage from "./pages/PlaylistPage";
+import CreateConcert from "./pages/CreateConcert"
 
 function App() {
 
@@ -74,19 +75,21 @@ function App() {
   // }
 
   return (
-    <div className="App">
+    <div className="App h-screen bg-gradient-to-t from-gray-800 to-black-600">
      <NavBar /> 
       
      <Routes>
         <Route path="/" element={<SoundGardenApp />}/>
         <Route path="/concerts" element={<ConcertPage />}/>
         <Route path="/playlists" element={<PlaylistPage/>}/>
+        <Route path="/concerts/new" element={<CreateConcert/>}/>
     </Routes>
 
-    <Login />
+
     <Search />
     </div>
   );
 }
 
 export default App;
+

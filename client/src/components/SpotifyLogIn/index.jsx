@@ -80,7 +80,7 @@ function Login() {
 
         return(
             <>
-            <h1>Welcome</h1>
+            <h1 className="text-3xl font-bold underline text-yellow">Welcome</h1>
              <h1>{userId}</h1>
             <img src={userImage} alt="missing"/>
             <header className="App-header">
