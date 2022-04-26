@@ -20,7 +20,7 @@ const indexConcert = (req, res) => {
 
 
 const userConcerts = (req, res) => {
-    db.Concert.findById(req.params.id)
+    db.Concert.findById(req.query)
     // .populate("user")
     .exec((err, allConcerts) => {
         if(err)
