@@ -10,24 +10,24 @@ const ConcertView = () =>  {
     const [year, setYear] = useState();
     const [venue, setVenue] = useState();
     let {id} = useParams();
+    const name = localStorage.getItem("id");
     const navigate = useNavigate();
 
     const handleSubmit = async () => {
 		let data = {artist, month, day, year, venue}
 		
-		await concertService.updateConcert(id, data).then(() => {
-            navigate("/concerts");
-		});
+		await concertService.updateConcert(name, id, data);
+        navigate(`/concerts/${name}`)
 	};
 
     const deleteConcert = async () => {
-         await concertService.destroyConcert(id).then(()=> {
-            navigate("/concerts");
+         await concertService.destroyConcert(name, id).then(()=> {
+            navigate(`/concerts/${name}`);
         })
     }
 
     const getConcertInfo = async () => {
-        await concertService.showConcert(id).then((res) => {
+        await concertService.showConcert(name, id).then((res) => {
             setArtist(res.data.data.artist);
             setMonth(res.data.data.month);
             setDay(res.data.data.day);

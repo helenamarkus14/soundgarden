@@ -1,14 +1,14 @@
 import React, {useState, useEffect} from 'react'
-
 import ConcertCard from '../../components/ConcertCard';
 import * as concertService from "../../api/concert.service"
-import { NavLink } from 'react-router-dom';
+import { NavLink, useParams } from 'react-router-dom';
 
 const ConcertPage = () => {
 const [concerts, setConcerts] = useState([]);
+const {name} = useParams();
 
 const fetchConcerts = async () => {
-    await concertService.indexConcert().then((res) => {
+    await concertService.userConcert(name).then((res) => {
         setConcerts(res.data.data.reverse());
     })
 }

@@ -84,8 +84,8 @@ function App() {
       
      <Routes>
         <Route path="/" element={<SoundGardenApp />}/>
-        <Route path="/concerts" element={<ConcertPage />}/>
-        <Route path="/concerts/:id" element={<ConcertView/>}/>
+        <Route path="/concerts/:name" element={<ConcertPage />}/>
+        <Route path="/concerts/:name/:id" element={<ConcertView/>}/>
         <Route path="/playlists" element={<PlaylistPage/>}/>
         <Route path="/concerts/new" element={<CreateConcert/>}/>
     </Routes>
