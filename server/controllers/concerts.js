@@ -19,7 +19,7 @@ const indexConcert = (req, res) => {
 const userConcerts = (req, res) => {
     db.Concert.find({"user": req.params.name})
     // .populate("user")
-    .exec((err, allConcerts) => {
+    .exec((err, userConcerts) => {
         if(err)
             return res.status(400).json({
                 message: "Failed to get concert list",
@@ -27,7 +27,7 @@ const userConcerts = (req, res) => {
             });
             return res.status(200).json({
                 message: "Successful concert list retrieval",
-                data: allConcerts,
+                data: userConcerts,
             });
         });
 };
