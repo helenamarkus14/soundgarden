@@ -20,9 +20,6 @@ const routes = require("./routes")
 const config = require("../packages/config");
 
 
-// connect to the MongoDB
-require("./config/database");
-
 /* ==== Middleware ==== */
 app.use(cors());
 app.use(express.static(path.join("build")));
