@@ -80,7 +80,7 @@ function Login() {
 
         return(
             <>
-            <h1>Welcome</h1>
+            <h1 className="text-3xl font-bold underline text-yellow">Welcome</h1>
              <h1>{userId}</h1>
             <img src={userImage} alt="missing"/>
             <header className="App-header">
@@ -91,7 +91,7 @@ function Login() {
                             {token ?
                                 <form onSubmit={searchArtists}>
                                     <input type="text" onChange={e => setSearchKey(e.target.value)}/>
-                                    <button type={"submit"}>Search</button>
+                                    <button className= "bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded-full"type={"submit"}>Search</button>
                                 </form>
 
                                 : <h2>Please login</h2>
