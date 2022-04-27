@@ -13,6 +13,9 @@ module.exports = {
   
   
       },
+      backgroundImage: {
+        'crowd': "url('/public/images/crowd.jpg')"
+      }
     },
   },
   plugins: [],

@@ -1,5 +1,5 @@
 import React, {useState, useEffect} from 'react'
-import ConcertForm from '../../components/ConcertForm';
+
 import ConcertCard from '../../components/ConcertCard';
 import * as concertService from "../../api/concert.service"
 import { NavLink } from 'react-router-dom';
@@ -17,9 +17,9 @@ useEffect(() => {
     
 	}, []);
   return (
-    <div>
-        <NavLink to="/concerts/new"><button className="rounded-full border-r-purple" type="button">Create New Concert</button></NavLink>
-        <ConcertForm />
+    <div className="overflow-auto">
+        <NavLink to="/concerts/new"><button className="text-yellow bg-black font-bold rounded-full px-3 py-1 text-xs outline-none focus:outline-none mr-1 mb-1 ease-linear transition-all duration-150" type="button">+ Create New Concert</button></NavLink>
+        
         {concerts.map((concert, i) => {
             return (
                 <>
