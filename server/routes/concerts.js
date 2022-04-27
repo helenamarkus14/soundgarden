@@ -5,7 +5,7 @@ router.get("/", concerts.indexConcert);
 router.get("/:name", concerts.userConcerts);
 router.get("/:name/:id", concerts.showConcert);
 router.post("/", concerts.createConcert);
-router.put("/:id", concerts.updateConcert);
-router.delete("/:id", concerts.destroyConcert);
+router.put("/:name/:id", concerts.updateConcert);
+router.delete("/:name/:id", concerts.destroyConcert);
 
 module.exports = router;
