@@ -30,6 +30,7 @@ useEffect(() => {
                     day={concert.day}
                     year={concert.year}
                     venue={concert.venue}
+                    id={concert._id}
                 />
                 </>
             )

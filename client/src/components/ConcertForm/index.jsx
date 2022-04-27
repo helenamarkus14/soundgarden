@@ -1,4 +1,4 @@
-import React, {useState} from 'react'
+import React, {useState, useEffect} from 'react'
 import * as concertService from "../../api/concert.service"
 
 
@@ -8,10 +8,16 @@ const ConcertForm = () => {
     const [day, setDay] = useState();
     const [year, setYear] = useState();
     const [venue, setVenue] = useState();
+    const [user, setUser] = useState("");
+
+    const getInfo = () => {
+        setUser(localStorage.getItem("id"));
+    }
+
 
     const handleSubmit = async () => {
 
-        const data = {artist, month, day, year, venue};
+        const data = {artist, month, day, year, venue, user};
     
         if (artist == ""){
 			alert("Please input title")
@@ -29,6 +35,10 @@ const ConcertForm = () => {
 		});}
 
     }
+
+    useEffect(() => {
+        getInfo();
+    }, [])
     
 
   return (
@@ -85,9 +95,12 @@ const ConcertForm = () => {
                     className="w-1/2 p-4 pr-12 text-sm border-gray-200 rounded-lg shadow-sm"
                     placeholder="Concert Venue"
                 />
+                <h4>Owner: {user}</h4>
             </div>
 
+
             <button className="block w-1/3 px-5 py-3 text-sm font-medium text-white bg-yellow rounded-lg"onClick={handleSubmit}> Create Set List </button>
+
         </form>
     </div>
   )

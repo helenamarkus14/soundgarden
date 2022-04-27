@@ -27,6 +27,10 @@ const concertSchema = new Schema({
         type: String,
         required: true,
     },
+    user: {
+        type: String,
+        required: true,
+    },
     playlists: [{ type: Schema.Types.ObjectId, ref: "Playlist" }],
 });
 
