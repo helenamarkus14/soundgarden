@@ -10,6 +10,21 @@ const indexUser = (req, res) => {
     })
 }
 
+const createUser = (req, res) => {
+    db.User.create(req.body, (err, savedUser) => {
+        if(err)
+        return res.status(400).json({
+            message: "Failed to create a user",
+            error: err,
+        });
+        return res.status(200).json({
+            message: "Successfully created user record",
+            data: savedUser,
+        })
+    })
+
+}
+
 const showUser = (req, res) => {
     db.User.findById(req.params.id)
         .populate("concert")
@@ -83,6 +98,7 @@ const destroyUser = (req, res) => {
 
 module.exports = {
     indexUser,
+    createUser,
     showUser,
     updateUser,
     destroyUser,
