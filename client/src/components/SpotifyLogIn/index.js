@@ -3,10 +3,6 @@ import { useEffect, useState } from "react";
 import axios from 'axios';
 import * as auth from "../../api/auth.service";
 
-const CLIENT_ID = '166cc5375d5442928444b3fc397a5bd7'
-const REDIRECT_URI = 'http://localhost:3000'
-const AUTH_ENDPOINT = "https://accounts.spotify.com/authorize"
-const RESPONSE_TYPE = "token"
 
 
 function Login() {
@@ -16,6 +12,7 @@ function Login() {
     const [userImage, setUserImage] = useState();
     const [artists, setArtists] = useState([])
     const scope = "playlist-read-collaborative playlist-modify-public";
+    
     // const getToken = () => {
     //     let urlParams = new URLSearchParams(window.location.hash.replace("#","?"));
     //     let token = urlParams.get('access_token');
@@ -45,6 +42,7 @@ function Login() {
             setUserImage(response.data.images[0].url);
             window.localStorage.setItem("id", response.data.id);
           }).catch(error => console.log(error))
+
     }, [])
 
     const logout = () => {
@@ -85,7 +83,7 @@ function Login() {
             <img src={userImage} alt="missing"/>
             <header className="App-header">
                             {!token ?
-                                <a href={`${AUTH_ENDPOINT}?client_id=${CLIENT_ID}&redirect_uri=${REDIRECT_URI}&response_type=${RESPONSE_TYPE}&scope=${scope}`}>Login to Spotify</a>
+                                <a href={`${process.env.REACT_APP_AUTHORIZE_URL}?client_id=${process.env.REACT_APP_CLIENT_ID}&redirect_uri=${process.env.REACT_APP_DEV_REDIRECT_URI}&response_type=${process.env.REACT_APP_RESPONSE_TYPE}&scope=${scope}`}>Login to Spotify</a>
                                 : <button onClick={logout}>Logout</button>}
 
                             {token ?
