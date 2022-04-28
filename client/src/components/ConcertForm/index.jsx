@@ -49,15 +49,15 @@ const ConcertForm = () => {
   return (
     <div className="max-w-screen-xl px-4 py-16 mx-auto sm:px-6 lg:px-8">
     
-        <form className= "p-8 mt-6 mb-0 space-y-4 rounded-lg shadow-2xl"autoComplete="off">
-        <h2 className="max-w-lg mx-auto">Enter Concert Details</h2>
+        <form className= "p-8 mt-6 mb-0 bg-black space-y-4 border border-solid border-turquoise rounded-lg shadow-2xl"autoComplete="off">
+        <h2 className="float-left max-w-lg mx-auto text-turquoise">Enter Concert Details</h2>
             <div>
                 <input
                     onChange={(e) => setArtist(e.target.value)}
                     value={artist}
                     type="text"
                     name="title"
-                    className="w-1/2 p-4 pr-12 text-sm border-gray-200 rounded-lg shadow-sm"
+                    className="block py-2.5 px-0 w-full text-sm text-turquoise bg-transparent border-0 border-b-2 border-gray-300 appearance-none dark:text-red dark:border-gray-600 dark:focus:border-red-500 focus:outline-none focus:ring-0 focus:border-red-600 peer"
                     placeholder="Artist Name"
                 />
             </div>
@@ -67,7 +67,7 @@ const ConcertForm = () => {
                     value={month}
                     type="text"
                     name="month"
-                    className="w-1/2 p-4 pr-12 text-sm border-gray-200 rounded-lg shadow-sm"
+                    className="block py-2.5 px-0 w-full text-sm text-turquoise bg-transparent border-0 border-b-2 border-gray-300 appearance-none dark:text-red dark:border-gray-600 dark:focus:border-red-500 focus:outline-none focus:ring-0 focus:border-red-600 peer"
                     placeholder="Month"
                 />
             </div>
@@ -77,7 +77,7 @@ const ConcertForm = () => {
                     value={day}
                     type="text"
                     name="day"
-                    className="w-1/2 p-4 pr-12 text-sm border-gray-200 rounded-lg shadow-sm"
+                    className="block py-2.5 px-0 w-full text-sm text-turquoise bg-transparent border-0 border-b-2 border-gray-300 appearance-none dark:text-red dark:border-gray-600 dark:focus:border-red-500 focus:outline-none focus:ring-0 focus:border-red-600 peer"
                     placeholder="Day"
                 />
             </div>
@@ -87,7 +87,7 @@ const ConcertForm = () => {
                     value={year}
                     type="text"
                     name="year"
-                    className="w-1/2 p-4 pr-12 text-sm border-gray-200 rounded-lg shadow-sm"
+                    className="block py-2.5 px-0 w-full text-sm text-turquoise bg-transparent border-0 border-b-2 border-gray-300 appearance-none dark:text-red dark:border-gray-600 dark:focus:border-red-500 focus:outline-none focus:ring-0 focus:border-red-600 peer"
                     placeholder="Year"
                 />
             </div>
@@ -97,14 +97,14 @@ const ConcertForm = () => {
                     value={venue}
                     type="text"
                     name="venue"
-                    className="w-1/2 p-4 pr-12 text-sm border-gray-200 rounded-lg shadow-sm"
+                    className="block py-2.5 px-0 w-full text-sm text-turquoise bg-transparent border-0 border-b-2 border-gray-300 appearance-none dark:text-red dark:border-gray-600 dark:focus:border-red-500 focus:outline-none focus:ring-0 focus:border-red-600 peer"
                     placeholder="Concert Venue"
                 />
-                <h4>Owner: {user}</h4>
+                <h4 className="py-2.5 text-sm text-gray-300 bg-transparent">Owner: {user}</h4>
             </div>
 
 
-            <button className="block w-1/3 px-5 py-3 text-sm font-medium text-white bg-yellow rounded-lg"onClick={handleSubmit}> Create Set List </button>
+            <button className="block w-48 justify-center px-5 py-3 text-sm font-medium text-white bg-yellow hover:bg-opacity-75 rounded-lg"onClick={handleSubmit}> Create Set List </button>
 
         </form>
     </div>
