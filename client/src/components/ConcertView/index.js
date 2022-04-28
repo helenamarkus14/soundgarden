@@ -13,17 +13,16 @@ const ConcertView = () =>  {
     const name = localStorage.getItem("id");
     const navigate = useNavigate();
 
-    const handleSubmit = async () => {
+    const handleSubmit =  () => {
 		let data = {artist, month, day, year, venue}
-		
-		await concertService.updateConcert(name, id, data);
-        navigate(`/concerts/${name}`)
+		concertService.updateConcert(name, id, data);
+        navigate(`/concerts/${name}`);
 	};
 
-    const deleteConcert = async () => {
-         await concertService.destroyConcert(name, id).then(()=> {
-            navigate(`/concerts/${name}`);
-        })
+    const deleteConcert = () => {
+         concertService.destroyConcert(name, id);
+        navigate(`/concerts/${name}`);
+        
     }
 
     const getConcertInfo = async () => {
@@ -37,7 +36,7 @@ const ConcertView = () =>  {
     }
 
     useEffect(() => {
-        getConcertInfo(id);
+        getConcertInfo();
     }, [])
    
   return (
@@ -103,4 +102,4 @@ const ConcertView = () =>  {
   )
 }
 
-export default ConcertView
+export default ConcertView;

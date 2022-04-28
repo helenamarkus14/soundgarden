@@ -38,9 +38,7 @@ function Login() {
             setUserId(response.data.id);
             setUserImage(response.data.images[0].url);
             window.localStorage.setItem("id", response.data.id);
-          }).catch(error => console.log(error))
-
-          console.log(process.env.REACT_APP_AUTHORIZE_URL);
+          }).catch(error => console.log(error)) 
     }, [])
 
     const logout = () => {
