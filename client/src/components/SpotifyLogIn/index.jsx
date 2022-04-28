@@ -38,7 +38,7 @@ function Login() {
             setUserId(response.data.id);
             setUserImage(response.data.images[0].url);
             window.localStorage.setItem("id", response.data.id);
-          }).catch(error => console.log(error))
+          }).catch(error => console.log(error)) 
     }, [])
 
     const logout = () => {
@@ -79,7 +79,7 @@ function Login() {
             <img src={userImage} alt="missing"/>
             <header className="App-header">
                             {!token ?
-                                <a href={`${process.env.REACT_APP_AUTH_ENDPOINT}?client_id=${process.env.REACT_APP_CLIENT_ID}&redirect_uri=${process.env.REACT_APP_REDIRECT_URI}&response_type=${process.env.REACT_APP_RESPONSE_TYPE}&scope=${scope}`}>Login to Spotify</a>
+                                <a href={`${process.env.REACT_APP_AUTHORIZE_URL}?client_id=${process.env.REACT_APP_CLIENT_ID}&redirect_uri=${process.env.REACT_APP_DEV_REDIRECT_URI}&response_type=${process.env.REACT_APP_RESPONSE_TYPE}&scope=${scope}`}>Login to Spotify</a>
                                 : <button onClick={logout}>Logout</button>}
 
                             {token ?

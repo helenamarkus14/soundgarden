@@ -5,20 +5,24 @@ const indexConcert = () => {
     return apiClient.get("/concerts")
 }
 
-const showConcert = (id) => {
-    return apiClient.get(`/concerts/${id}`)
+const userConcert = (id) => {
+    return apiClient.get(`/concerts/${id}`);
+}
+
+const showConcert = (name, id) => {
+    return apiClient.get(`/concerts/${name}/${id}`)
 }
 
 const createConcert = (data) => {
     return apiClient.post("/concerts", data);
 }
 
-const updateConcert = (id, data) => {
-    return apiClient.put(`/concerts/${id}`, data);
+const updateConcert = (name, id, data) => {
+    return apiClient.put(`/concerts/${name}/${id}`, data);
 }
 
-const destroyConcert = (id) => {
-    return apiClient.delete(`/concerts/${id}`);
+const destroyConcert = (name, id) => {
+    return apiClient.delete(`/concerts/${name}/${id}`);
 }
 
-export {indexConcert, showConcert, createConcert, updateConcert, destroyConcert};
+export {indexConcert, userConcert, showConcert, createConcert, updateConcert, destroyConcert};
