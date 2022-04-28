@@ -9,10 +9,9 @@ import Login from "./components/SpotifyLogIn";
 import Search from "./components/SpotifySearch";
 import ConcertPage from "./pages/ConcertPage";
 import PlaylistPage from "./pages/PlaylistPage";
-
 import CreateConcert from "./pages/CreateConcert"
-
 import ConcertView from "./components/ConcertView";
+import UsersPage from "./pages/UsersPage";
 
 
 function App() {
@@ -27,6 +26,7 @@ function App() {
         <Route path="/concerts/:name/:id" element={<ConcertView/>}/>
         <Route path="/playlists" element={<PlaylistPage/>}/>
         <Route path="/concerts/new" element={<CreateConcert/>}/>
+        <Route path="/users" element={<UsersPage/>}/>
     </Routes>
 
 
