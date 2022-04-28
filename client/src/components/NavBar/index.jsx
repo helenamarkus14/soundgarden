@@ -1,9 +1,11 @@
 import {NavLink} from 'react-router-dom';
-import {useState} from 'react'
+import {useState, useEffect} from 'react'
 import "./navbar.css"
 
 const NavBar = () => {
     const [navbarOpen, setNavbarOpen] = useState(false);
+    const id = localStorage.getItem("id");
+  
 
     return (
     <>
@@ -43,12 +45,18 @@ const NavBar = () => {
                 </a>
               </li>
               <li className="nav-item">
+
                 <a
                   className="px-3 py-2 flex hover:text-turquoise items-center text-xs uppercase font-bold leading-snug text-red hover:opacity-75"
                   href="/concerts"
+
+                <NavLink
+                  className="px-3 py-2 flex items-center text-xs uppercase font-bold leading-snug text-red hover:opacity-75"
+                  to={`/concerts/${id}`}  
+
                 >
                  <span className="ml-2">Concerts</span>
-                </a>
+                </NavLink>
               </li>
               <li className="nav-item">
                 <a

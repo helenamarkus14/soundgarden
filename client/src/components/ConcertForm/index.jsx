@@ -1,5 +1,6 @@
 import React, {useState, useEffect} from 'react'
 import * as concertService from "../../api/concert.service"
+import { useNavigate } from 'react-router-dom';
 
 
 const ConcertForm = () => {
@@ -9,6 +10,7 @@ const ConcertForm = () => {
     const [year, setYear] = useState();
     const [venue, setVenue] = useState();
     const [user, setUser] = useState("");
+    const navigate = useNavigate();
 
     const getInfo = () => {
         setUser(localStorage.getItem("id"));
@@ -18,21 +20,24 @@ const ConcertForm = () => {
     const handleSubmit = async () => {
 
         const data = {artist, month, day, year, venue, user};
-    
+        
         if (artist == ""){
-			alert("Please input title")
+			alert("Please input title");
 		} else if(month == "" || day == "" || year == ""){
-			alert("Please input date credentials")
-		} else if(venue == "" ){
-			alert("Please input venue")
+			alert("Please input date credentials");
+		} else if(month > 12 || month <= 0 || day > 31 || day <= 0) {
+            alert("Please check date values");
+        } else if(venue == "" ){
+			alert("Please input venue");
 		} else {
-		concertService.createConcert(data).then(() => {
-			setArtist("");
-			setMonth("");
-			setDay("");
-			setYear("");
-            setVenue("");
-		});}
+		concertService.createConcert(data);
+        setArtist("");
+        setMonth("");
+        setDay("");
+        setYear("");
+        setVenue("");
+        navigate(`/concerts/${user}`)
+		}
 
     }
 
