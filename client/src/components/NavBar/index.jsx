@@ -16,7 +16,9 @@ const NavBar = () => {
               className="text-sm font-bold leading-relaxed inline-block mr-4 py-2 whitespace-nowrap uppercase text-red"
               href="/"
             >
-              Sound Garden
+             <div className="flex hover:text-turquoise"> 
+             <img src="/images/SGLogo.jpg" className="mr-1 h-6 w-6 rounded-full hover:text-turquoise" alt="" /> Sound Garden
+             </div>  
             </a>
             <button
               className="text-red cursor-pointer text-xl leading-none px-3 py-1 border border-solid border-transparent rounded bg-transparent block lg:hidden outline-none focus:outline-none"
@@ -36,28 +38,35 @@ const NavBar = () => {
             <ul className="flex flex-col lg:flex-row list-none lg:ml-auto">
               <li className="nav-item">
                 <a
-                  className="px-3 py-2 flex items-center text-xs uppercase font-bold leading-snug text-red hover:opacity-75"
+                  className="px-3 py-2 hover:text-turquoise flex items-center text-xs uppercase font-bold leading-snug text-red hover:opacity-75"
                   href="/"
                 >
                   <span className="ml-2">Home</span>
                 </a>
               </li>
               <li className="nav-item">
+
+                <a
+                  className="px-3 py-2 flex hover:text-turquoise items-center text-xs uppercase font-bold leading-snug text-red hover:opacity-75"
+                  href="/concerts"
+
                 <NavLink
                   className="px-3 py-2 flex items-center text-xs uppercase font-bold leading-snug text-red hover:opacity-75"
                   to={`/concerts/${id}`}  
+
                 >
                  <span className="ml-2">Concerts</span>
                 </NavLink>
               </li>
               <li className="nav-item">
                 <a
-                  className="px-3 py-2 flex items-center text-xs uppercase font-bold leading-snug text-red hover:opacity-75"
+                  className="px-3 py-2 flex hover:text-turquoise items-center text-xs uppercase font-bold leading-snug text-red hover:opacity-75"
                   href="/playlists"
                 >
                  <span className="ml-2">Playlists</span>
                 </a>
               </li>
+
               <li className="nav-item">
                 <a
                   className="px-3 py-2 flex items-center text-xs uppercase font-bold leading-snug text-red hover:opacity-75"
@@ -66,6 +75,7 @@ const NavBar = () => {
                  <span className="ml-2">Users</span>
                 </a>
               </li>
+
             </ul>
           </div>
         </div>

@@ -27,6 +27,7 @@ function Login() {
         window.localStorage.removeItem("id");
     }
 
+
     const userInfoWrite = async () => {
         let data = {"display_name": userDisplay, "id": userId, "image_url": userImage, "spotify_url": userSpotifyURL}
         let res = await userService.createUser(data).then(() => {
@@ -51,13 +52,31 @@ function Login() {
         setArtists(data.artists.items)
     }
 
-    const renderArtists = () => {
-        return artists.map(artist => (
-            <div key={artist.id}>
-                {artist.images.length ? <img width={"100%"} src={artist.images[0].url} alt=""/> : <div>No Image</div>}
-                {artist.name}
-            </div>
-        ))
+    return(
+        <>
+        <div className="flex">
+        <img src={userImage ? userImage : "/images/SGLogo.jpg"} className= "h-24 w-24 rounded-full" alt="missing"/>
+        <h1 className="text-3xl font-bold text-yellow mt-6 ml-1">{userId}</h1>
+       
+        </div>
+        <header className="App-header">
+                        {!token ?
+                            <a href={`${process.env.REACT_APP_AUTHORIZE_URL}?client_id=${process.env.REACT_APP_CLIENT_ID}&redirect_uri=${process.env.REACT_APP_DEV_REDIRECT_URI}&response_type=${process.env.REACT_APP_RESPONSE_TYPE}&scope=${scope}`}>Login to Spotify</a>
+                            : <button onClick={logout}>Logout</button>}
+
+                        {/* {token ?
+                            <form onSubmit={searchArtists}>
+                                <input type="text" onChange={e => setSearchKey(e.target.value)}/>
+                                <button className= "bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded-full"type={"submit"}>Search</button>
+                            </form>
+
+                            : <h2>Please login</h2>
+                        }
+                        {renderArtists()} */}
+                        
+                    </header>
+                    </>
+    );    
     }
 
 
@@ -90,9 +109,6 @@ function Login() {
           }).catch(error => console.log(error)) 
     }, [])
 
-
-
-
         return(
             <>
             <h1 className="text-3xl font-bold underline text-yellow">Welcome</h1>
@@ -112,11 +128,12 @@ function Login() {
                                 : <h2>Please login</h2>
                             }
                             {renderArtists()}
+
                             
-                        </header>
-                        </>
-        );      
-}  
+        //                 </header>
+        //                 </>
+        // );      
+
 
 
 export default Login;

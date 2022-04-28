@@ -9,6 +9,7 @@ import Login from "./components/SpotifyLogIn";
 import Search from "./components/SpotifySearch";
 import ConcertPage from "./pages/ConcertPage";
 import PlaylistPage from "./pages/PlaylistPage";
+import CreatePlaylist from "./pages/CreatePlaylist";
 import CreateConcert from "./pages/CreateConcert"
 import ConcertView from "./components/ConcertView";
 import UsersPage from "./pages/UsersPage";
@@ -27,10 +28,12 @@ function App() {
         <Route path="/playlists" element={<PlaylistPage/>}/>
         <Route path="/concerts/new" element={<CreateConcert/>}/>
         <Route path="/users" element={<UsersPage/>}/>
+        <Route path="/playlists/new" element={<CreatePlaylist/>}/>
+
     </Routes>
 
 
-    <Search />
+    
     </div>
   );
 }
