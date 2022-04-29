@@ -61,35 +61,37 @@ const ConcertForm = () => {
                     placeholder="Artist Name"
                 />
             </div>
-            <div className="flex flex-row">
-                <input
-                    onChange={(e) => setMonth(e.target.value)}
-                    value={month}
-                    type="text"
-                    name="month"
-                    className="block py-2.5 px-0 w-full text-sm text-turquoise bg-transparent border-0 border-b-2 border-gray-300 appearance-none dark:text-red dark:border-gray-600 dark:focus:border-red-500 focus:outline-none focus:ring-0 focus:border-red-600 peer"
-                    placeholder="Month"
-                />
-            </div>
-            <div className="flex flex-row">
-                <input
-                    onChange={(e) => setDay(e.target.value)}
-                    value={day}
-                    type="text"
-                    name="day"
-                    className="block py-2.5 px-0 w-full text-sm text-turquoise bg-transparent border-0 border-b-2 border-gray-300 appearance-none dark:text-red dark:border-gray-600 dark:focus:border-red-500 focus:outline-none focus:ring-0 focus:border-red-600 peer"
-                    placeholder="Day"
-                />
-            </div>
-            <div>
-                <input
-                    onChange={(e) => setYear(e.target.value)}
-                    value={year}
-                    type="text"
-                    name="year"
-                    className="block py-2.5 px-0 w-full text-sm text-turquoise bg-transparent border-0 border-b-2 border-gray-300 appearance-none dark:text-red dark:border-gray-600 dark:focus:border-red-500 focus:outline-none focus:ring-0 focus:border-red-600 peer"
-                    placeholder="Year"
-                />
+            <div className="date flex flex-row">
+                <div className="flex flex-row pr-2">
+                    <input
+                        onChange={(e) => setMonth(e.target.value)}
+                        value={month}
+                        type="text"
+                        name="month"
+                        className="block py-2.5 px-0 w-full text-sm text-turquoise bg-transparent border-0 border-b-2 border-gray-300 appearance-none dark:text-red dark:border-gray-600 dark:focus:border-red-500 focus:outline-none focus:ring-0 focus:border-red-600 peer"
+                        placeholder="Month"
+                    />
+                </div>
+                <div className="flex flex-row pr-2">
+                    <input
+                        onChange={(e) => setDay(e.target.value)}
+                        value={day}
+                        type="text"
+                        name="day"
+                        className="block py-2.5 px-0 w-full text-sm text-turquoise bg-transparent border-0 border-b-2 border-gray-300 appearance-none dark:text-red dark:border-gray-600 dark:focus:border-red-500 focus:outline-none focus:ring-0 focus:border-red-600 peer"
+                        placeholder="Day"
+                    />
+                </div>
+                <div>
+                    <input
+                        onChange={(e) => setYear(e.target.value)}
+                        value={year}
+                        type="text"
+                        name="year"
+                        className="block py-2.5 px-0 w-full text-sm text-turquoise bg-transparent border-0 border-b-2 border-gray-300 appearance-none dark:text-red dark:border-gray-600 dark:focus:border-red-500 focus:outline-none focus:ring-0 focus:border-red-600 peer"
+                        placeholder="Year"
+                    />
+                </div>
             </div>
             <div>
                 <input
@@ -104,7 +106,7 @@ const ConcertForm = () => {
             </div>
 
 
-            <button className="block w-48 justify-center px-5 py-3 text-sm font-medium text-white bg-yellow hover:bg-opacity-75 rounded-lg"onClick={handleSubmit}> Create Set List </button>
+            <button className="block w-48 justify-center px-5 py-3 text-sm font-medium text-white bg-yellow hover:bg-opacity-75 rounded-lg"onClick={handleSubmit}> Create Concert</button>
 
         </form>
     </div>
