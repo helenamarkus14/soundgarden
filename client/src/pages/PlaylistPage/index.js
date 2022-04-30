@@ -67,20 +67,31 @@ const PlaylistPage = () => {
 
         <div className="flex-auto">
         </div>
-
+            <div className="grid lg:grid-cols-3">
             {userPlaylists.map((playlist) => {
                 return(
                     <>
-                    <h3>{playlist.id}</h3>
+                    {/* <h3>{playlist.id}</h3>
                     <h3>{playlist.name}</h3>
                     <a href={playlist.external_urls.spotify}> Link To Playlist</a>
-                    <img src={playlist.images[0].url}/>
+                    <img src={playlist.images[0].url} alt="no image found"/> */}
+
+            
+                <div className="w-96 mt-6 ml-8 bg-white pb-2 rounded-lg border border-black shadow-md dark:bg-black dark:border-black">
+                    <h2 className="mt-6 mb-1 px-7 text-2xl font-extrabold tracking-wide lg:text-3xl">{playlist.name}</h2>
+                        <div className="grid lg:grid-cols-3">
+                            <div key={playlist.id}>
+                            <a href={playlist.external_urls.spotify}> Link To Playlist</a>
+                            <img src={playlist.images[0].url} alt="no image found"/>
+                            </div>
+                        </div>
+                </div>
+            
                     </>
                 )
             })}
-
+        </div>
     </div>
-   </div>
     </>
   )
 }
