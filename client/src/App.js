@@ -15,6 +15,7 @@ import ConcertView from "./components/ConcertView";
 import UsersPage from "./pages/UsersPage";
 import ConcertPlaylistPage from "./pages/ConcertPlaylistPage";
 import ConcertEdit from "./components/ConcertEdit";
+import PlaylistForm from "./components/PlaylistForm";
 
 
 function App() {
@@ -28,7 +29,7 @@ function App() {
         <Route path="/concerts/:name" element={<ConcertPage />}/>
         <Route path="/concerts/:name/:id" element={<ConcertView/>}/>
         <Route path="/concerts/:name/:id/edit" element={<ConcertEdit/>}/>
-        <Route path="/concerts/:name/:id/playlist" element={<ConcertPlaylistPage/>}/>
+        <Route path="/concerts/:name/:id/playlists" element={<PlaylistForm/>}/>
         <Route path="/playlists" element={<PlaylistPage/>}/>
         <Route path="/concerts/new" element={<CreateConcert/>}/>
         <Route path="/users" element={<UsersPage/>}/>
