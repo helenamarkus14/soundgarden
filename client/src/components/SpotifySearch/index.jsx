@@ -3,15 +3,14 @@ import { useEffect, useState } from "react";
 import axios from 'axios';
 
 const Search = () => {
-    const [authToken, setAuthToken] = useState();
     const [searchForKey, setSearchForKey] = useState("");
     const [artistInfo, setArtistInfo] = useState([]);
     const [trackInfo, setTrackInfo] = useState([]);
-
-    const getInfo = () => {
-      let token = localStorage.getItem("token");
-      setAuthToken(token);
-    }
+    let token = localStorage.getItem("token");
+    // const getInfo = () => {
+    //   let token = localStorage.getItem("token");
+    //   setAuthToken(token);
+    // }
 
     const renderArtists = () => {
       return artistInfo.map(artist => (
@@ -29,10 +28,7 @@ const Search = () => {
       </div>
   ))
   }
-    useEffect(() => {;
-    getInfo();
-
-  }, []);
+    
 
     const searchBy = () => {
         axios("https://api.spotify.com/v1/search", {
@@ -40,17 +36,17 @@ const Search = () => {
             'headers': {
                 'Content-Type': 'application/json',
                 'Accept': 'application/json',
-                'Authorization': 'Bearer ' + authToken
+                'Authorization': 'Bearer ' + token
             },
             'params': {
                 'q': searchForKey,
-                'type': "track,artist"
+                'type': "track,artist,album,genre,year"
             }
         }).then(response=> {
             console.log(response.data.tracks.items[0].external_urls.spotify)
             console.log(response);
-            setArtistInfo(response.data.artists.items);
-            setTrackInfo(response.data.tracks.items);
+            // setArtistInfo(response.data.artists.items);
+            // setTrackInfo(response.data.tracks.items);
           }).catch(error => console.log(error))
           .catch(error => console.log(error));
         }

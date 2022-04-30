@@ -4,14 +4,11 @@ import Search from '../../components/SpotifySearch';
 import { NavLink } from 'react-router-dom';
 
 const PlaylistPage = () => {
-    const [authToken, setAuthToken] = useState();
-    const [userId, setUserId] = useState();
-    const [userPlaylists, setUserPlaylists] = useState([]);
 
-    const getInfo = () => {
-        setAuthToken(localStorage.getItem("token"));
-        setUserId(localStorage.getItem("id"));
-    }
+    const [userPlaylists, setUserPlaylists] = useState([]);
+    let authToken = localStorage.getItem("token");
+    let userId = localStorage.getItem("id");
+  
 
     const renderPlaylists = () => {
         return userPlaylists.map(playlist=> (
@@ -48,9 +45,9 @@ const PlaylistPage = () => {
 
 
     useEffect(() => {
-        getInfo();
         getPlaylists();
-    }, [getPlaylists])
+        renderPlaylists();
+    }, [])
 
 
   return (
