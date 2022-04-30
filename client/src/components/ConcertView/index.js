@@ -31,7 +31,7 @@ const ConcertView = () =>  {
 
     useEffect(() => {
         getConcertInfo();
-    }, [])
+    }, [getConcertInfo])
    
   return (
     <div className="max-w-screen-xl px-4 py-16 mx-auto sm:px-6 lg:px-8">
@@ -48,9 +48,9 @@ const ConcertView = () =>  {
             return (
                 <>
                 
-                <h3>{playlist.name},</h3>
+                <h3>{playlist.name}</h3>
                 <h4>{playlist.description}</h4>
-                <NavLink to={`/concerts/${name}/${id}/playlists/${playlist._id}`} 
+                <NavLink to={`/concerts/${name}/${id}/playlists/${playlist._id}/edit`} 
                 element={<PlaylistEdit />}> Edit Playlist </NavLink>
                 </>
             )

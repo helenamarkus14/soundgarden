@@ -11,15 +11,16 @@ const PlaylistEdit = () => {
     let {id2} = useParams();
     const username = localStorage.getItem("id");
 
-    const handleSubmit = async () => {
+    const handleSubmit = () => {
         let data = {name, description};
         if (name == ""){
 			alert("Please enter a playlist title");
 		} else if(description == ""){
 			alert("Please input a playlist description");
 		} else {
-		concertService.newPlaylist(username, id1, id2, data);
+		concertService.updatePlaylist(username, id1, id2, data);
         navigate(`/concerts/${username}/${id1}`)
+        // refreshConcertInfo();
 		}
     }
 
@@ -29,8 +30,9 @@ const PlaylistEdit = () => {
     }
 
     const getPlaylistInfo = () => {
-         concertService.showConcert(username, id1).then((res) => {
-            console.log(res);
+         concertService.showPlaylist(username, id1, id2).then((res) => {
+            setName(res.data.data.playlists.name)
+            setDescription(res.data.data.playlists.description);
          })
     }
 
@@ -44,7 +46,7 @@ useEffect(() => {
     <div className="max-w-screen-xl px-4 py-16 mx-auto sm:px-6 lg:px-8">
     
         <form className= "p-8 mt-6 mb-0 bg-black space-y-4 border border-solid border-turquoise rounded-lg shadow-2xl"autoComplete="off">
-        <h2 className="float-left max-w-lg mx-auto text-turquoise">Enter Playlist Details</h2>
+        <h2 className="float-left max-w-lg mx-auto text-turquoise">Update Playlist Details</h2>
             <div>
                 <input
                     onChange={(e) => setName(e.target.value)}
@@ -68,8 +70,8 @@ useEffect(() => {
                 </div>
             </div>
            
-            <button className="block w-48 justify-center px-5 py-3 text-sm font-medium text-white bg-yellow hover:bg-opacity-75 rounded-lg"onClick={handleSubmit}> Update Playlist</button>
-            <button className="block w-48 justify-center px-5 py-3 text-sm font-medium text-white bg-yellow hover:bg-opacity-75 rounded-lg"onClick={deletePlaylist}> Delete Playlist</button>
+            <button type="button" className="block w-48 justify-center px-5 py-3 text-sm font-medium text-white bg-yellow hover:bg-opacity-75 rounded-lg"onClick={handleSubmit}> Update Playlist</button>
+            <button type="button" className="block w-48 justify-center px-5 py-3 text-sm font-medium text-white bg-yellow hover:bg-opacity-75 rounded-lg"onClick={deletePlaylist}> Delete Playlist</button>
         </form>
     </div>
   )

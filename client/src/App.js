@@ -31,7 +31,7 @@ function App() {
         <Route path="/concerts/:name/:id" element={<ConcertView/>}/>
         <Route path="/concerts/:name/:id/edit" element={<ConcertEdit/>}/>
         <Route path="/concerts/:name/:id/playlists" element={<PlaylistForm/>}/>
-        <Route path="/concerts/:name/:id1/playlists/:id2" element={<PlaylistEdit/>}/>
+        <Route path="/concerts/:name/:id1/playlists/:id2/edit" element={<PlaylistEdit/>}/>
         <Route path="/playlists" element={<PlaylistPage/>}/>
         <Route path="/concerts/new" element={<CreateConcert/>}/>
         <Route path="/users" element={<UsersPage/>}/>
