@@ -22,10 +22,6 @@ const PlaylistPage = () => {
             <h2 className="mt-6 mb-1 px-7 text-2xl font-extrabold tracking-wide lg:text-3xl">{playlist.name}</h2>
           <div className="grid lg:grid-cols-3">
             <div key={playlist.id}>
-            {/* playlist.images.map(image => {
-                <img src={image.url}
-            }) */}
-            {/* <img src={playlist.images[0].url} alt="missing"></img>  */}
 
                 <a href={playlist.external_urls.spotify}> Link To Playlist</a>
             </div>
