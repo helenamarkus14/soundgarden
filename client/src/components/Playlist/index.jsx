@@ -7,24 +7,18 @@ import axios from "axios";
 
 
 const Playlist = () => {
-    const [token, setToken] = useState("");
-    const [userData, setUserData] = useState();
     const [authToken, setAuthToken] = useState();
     const [userId, setUserId] = useState();
-    const [userImage, setUserImage] = useState();
+    const [userPlaylists, setUserPlaylists] = useState([]);
     const [playlistName, setPlaylistName] = useState("");
     const [playlistDescription, setPlaylistDescription] = useState("");
-    
+
     const getInfo = () => {
       let token = localStorage.getItem("token");
       let id = localStorage.getItem("id");
       setAuthToken(token);
       setUserId(id);
     }
-
-    useEffect(() => {;
-    getInfo();
-  }, []);
 
 
 const createPlaylist = () => {
@@ -45,6 +39,7 @@ const createPlaylist = () => {
         }).catch(error => console.log(error))
 }
 
+
   return (
     <div className="max-w-screen-xl px-4 py-16 mx-auto sm:px-6 lg:px-8">
   
@@ -55,7 +50,7 @@ const createPlaylist = () => {
         <div className="flex flex-row">
           <input className="block py-2.5 px-0 w-full text-sm text-gray-900 bg-transparent border-0 border-b-2 border-gray-300 appearance-none dark:text-red dark:border-gray-600 dark:focus:border-red-500 focus:outline-none focus:ring-0 focus:border-red-600 peer" placeholder="Playlist Description" type="text" onChange={e => setPlaylistDescription(e.target.value)}/>
         </div>    
-        <button className="block w-48 justify-center px-5 py-3 text-sm font-medium text-white bg-yellow hover:bg-opacity-75 rounded-lg" type={"submit"}>Create Playlist</button>
+        <button className="block w-48 justify-center px-5 py-3 text-sm font-medium text-white bg-yellow hover:bg-opacity-75 rounded-lg" type={"submit"}>Create Spotify Playlist</button>
      </form>
     </div>
   )

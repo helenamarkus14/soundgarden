@@ -39,10 +39,10 @@ const ConcertView = () =>  {
         <h3>Date: {month}, {day}, {year}</h3>
         <h3>Venue: {venue}</h3>
         <NavLink to={`/concerts/${name}/${id}/edit`} 
-        element={<ConcertEdit />}> Edit </NavLink>
+        element={<ConcertEdit />} className="text-yellow bg-black font-bold rounded-full px-3 py-1 text-xs outline-none focus:outline-none mr-1 mb-1 ease-linear transition-all duration-150" type="button"> Edit </NavLink>
 
         <NavLink to={`/concerts/${name}/${id}/playlists`} 
-        element={<PlaylistForm />}> Create A Playlist </NavLink>
+        element={<PlaylistForm />} className="text-yellow bg-black font-bold rounded-full px-3 py-1 text-xs outline-none focus:outline-none mr-1 mb-1 ease-linear transition-all duration-150" type="button"> Create A Playlist </NavLink>
         <h3>Playlists</h3>
         {playlists.map((playlist) => {
             return (
@@ -51,7 +51,7 @@ const ConcertView = () =>  {
                 <h3>{playlist.name}</h3>
                 <h4>{playlist.description}</h4>
                 <NavLink to={`/concerts/${name}/${id}/playlists/${playlist._id}/edit`} 
-                element={<PlaylistEdit />}> Edit Playlist </NavLink>
+                element={<PlaylistEdit />} className="text-yellow bg-black font-bold rounded-full px-3 py-1 text-xs outline-none focus:outline-none mr-1 mb-1 ease-linear transition-all duration-150" type="button"> Edit Playlist </NavLink>
                 </>
             )
         })}

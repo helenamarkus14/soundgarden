@@ -20,7 +20,6 @@ const PlaylistEdit = () => {
 		} else {
 		concertService.updatePlaylist(username, id1, id2, data);
         navigate(`/concerts/${username}/${id1}`)
-        // refreshConcertInfo();
 		}
     }
 
@@ -35,7 +34,6 @@ const PlaylistEdit = () => {
             setDescription(res.data.data.playlists.description);
          })
     }
-
 
 
 useEffect(() => {
