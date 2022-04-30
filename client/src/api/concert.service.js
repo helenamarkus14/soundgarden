@@ -10,7 +10,7 @@ const userConcert = (id) => {
 }
 
 const showConcert = (name, id) => {
-    return apiClient.get(`/concerts/${name}/${id}`)
+    return apiClient.get(`/concerts/${name}/${id}/playlist`)
 }
 
 const createConcert = (data) => {

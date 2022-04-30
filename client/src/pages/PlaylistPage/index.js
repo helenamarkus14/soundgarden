@@ -7,23 +7,16 @@ const PlaylistPage = () => {
     const [authToken, setAuthToken] = useState();
     const [userId, setUserId] = useState();
     const [userPlaylists, setUserPlaylists] = useState([]);
+  
 
     const getInfo = () => {
         setAuthToken(localStorage.getItem("token"));
         setUserId(localStorage.getItem("id"));
     }
 
-    const renderPlaylists = () => {
-        return userPlaylists.map(playlist => (
-            <div key={playlist.id}>
-                {playlist.name}
-                <a href={playlist.external_urls.spotify}> Link To Playlist</a>
-            </div>
-        ))
-    }
 
-    const getPlaylists = async () => {
-        await axios('https://api.spotify.com/v1/me/playlists', {
+    const getPlaylists = () => {
+         axios('https://api.spotify.com/v1/me/playlists', {
             'method': 'GET',
             'headers': {
                 'Content-Type': 'application/json',
@@ -32,13 +25,13 @@ const PlaylistPage = () => {
             }
           }).then(response=> {
             setUserPlaylists(response.data.items);
-            console.log(response.data.items);
           }).catch(error => console.log(error))
     }
 
 
     useEffect(() => {
         getInfo();
+        getPlaylists();
     }, [])
 
 
@@ -51,10 +44,21 @@ const PlaylistPage = () => {
             <Search />
         </div>
         <h2>{userId}'s Playlists</h2>
-        <button onClick={getPlaylists}>Get My Playlists</button>
-        {renderPlaylists()}
+
         <div className="flex-auto">
         </div>
+
+            {userPlaylists.map((playlist) => {
+                return(
+                    <>
+                    <h3>{playlist.id}</h3>
+                    <h3>{playlist.name}</h3>
+                    <a href={playlist.external_urls.spotify}> Link To Playlist</a>
+                    <img src={playlist.images[0].url}/>
+                    </>
+                )
+            })}
+
     </div>
   )
 }
