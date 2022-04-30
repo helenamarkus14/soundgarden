@@ -3,27 +3,42 @@ import * as concertService from "../../api/concert.service"
 import { useNavigate, useParams } from 'react-router-dom';
 
 
-const PlaylistForm = () => {
+const PlaylistEdit = () => {
     const [name, setName] = useState("");
     const [description, setDescription] = useState("");
     const navigate = useNavigate();
-    let {id} = useParams();
+    let {id1} = useParams();
+    let {id2} = useParams();
     const username = localStorage.getItem("id");
 
     const handleSubmit = async () => {
-
-        const data = {name, description};
-        
+        let data = {name, description};
         if (name == ""){
 			alert("Please enter a playlist title");
 		} else if(description == ""){
 			alert("Please input a playlist description");
 		} else {
-		concertService.newPlaylist(username, id, data);
-        navigate(`/concerts/${username}/${id}`)
+		concertService.newPlaylist(username, id1, id2, data);
+        navigate(`/concerts/${username}/${id1}`)
 		}
-
     }
+
+    const deletePlaylist = () => {
+        concertService.deletePlaylist(username, id1, id2);
+        navigate(`/concerts/${username}/${id1}`)
+    }
+
+    const getPlaylistInfo = () => {
+         concertService.showConcert(username, id1).then((res) => {
+            console.log(res);
+         })
+    }
+
+
+
+useEffect(() => {
+    getPlaylistInfo();
+}, [])
 
   return (
     <div className="max-w-screen-xl px-4 py-16 mx-auto sm:px-6 lg:px-8">
@@ -53,11 +68,11 @@ const PlaylistForm = () => {
                 </div>
             </div>
            
-            <button className="block w-48 justify-center px-5 py-3 text-sm font-medium text-white bg-yellow hover:bg-opacity-75 rounded-lg"onClick={handleSubmit}> Create Playlist</button>
-
+            <button className="block w-48 justify-center px-5 py-3 text-sm font-medium text-white bg-yellow hover:bg-opacity-75 rounded-lg"onClick={handleSubmit}> Update Playlist</button>
+            <button className="block w-48 justify-center px-5 py-3 text-sm font-medium text-white bg-yellow hover:bg-opacity-75 rounded-lg"onClick={deletePlaylist}> Delete Playlist</button>
         </form>
     </div>
   )
 }
 
-export default PlaylistForm;
+export default PlaylistEdit;

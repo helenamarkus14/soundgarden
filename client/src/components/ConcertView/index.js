@@ -3,6 +3,7 @@ import { useParams, useNavigate, NavLink } from 'react-router-dom';
 import * as concertService from "../../api/concert.service"
 import ConcertEdit from '../ConcertEdit';
 import PlaylistForm from '../PlaylistForm';
+import PlaylistEdit from '../PlaylistEdit';
 
 const ConcertView = () =>  {
     
@@ -46,8 +47,11 @@ const ConcertView = () =>  {
         {playlists.map((playlist) => {
             return (
                 <>
-                <h3>{playlist.name}</h3>
+                
+                <h3>{playlist.name},</h3>
                 <h4>{playlist.description}</h4>
+                <NavLink to={`/concerts/${name}/${id}/playlists/${playlist._id}`} 
+                element={<PlaylistEdit />}> Edit Playlist </NavLink>
                 </>
             )
         })}
