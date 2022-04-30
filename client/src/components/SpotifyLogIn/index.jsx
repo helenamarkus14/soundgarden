@@ -3,6 +3,7 @@ import { useEffect, useState } from "react";
 import axios from 'axios';
 import * as userService from "../../api/user.service";
 import apiClient from "../../api/axios.config";
+import Search from "../SpotifySearch";
 
 function Login() {
     const [token, setToken] = useState("")
@@ -12,12 +13,6 @@ function Login() {
     const [artists, setArtists] = useState([]);
     const [userDisplay, setUserDisplay] = useState("");
     const [userSpotifyURL, setUserSpotifyURL] = useState("");
-    // const scope = "playlist-read-collaborative playlist-modify-public";
-    // const getToken = () => {
-    //     let urlParams = new URLSearchParams(window.location.hash.replace("#","?"));
-    //     let token = urlParams.get('access_token');
-    // }
-
 
     const logout = () => {
         setToken("");
@@ -84,55 +79,19 @@ function Login() {
     }, [])
     return(
         <>
-        <div className="flex">
-        <img src={userImage ? userImage : "/images/SGLogo.jpg"} className= "h-24 w-24 rounded-full" alt="missing"/>
-        <h1 className="text-3xl font-bold text-yellow mt-6 ml-1">{userId}</h1>
+            <div className="flex">
+                <img src={userImage ? userImage : "/images/SGLogo.jpg"} className= "h-24 w-24 rounded-full" alt="missing"/>
+                <h1 className="text-3xl font-bold text-yellow mt-6 ml-1">{userId}</h1>
        
-        </div>
-        <header className="App-header">
+            </div>
+                    <header className="App-header">
                         {!token ?
-                            <a href={`${process.env.REACT_APP_AUTHORIZE_URL}?client_id=${process.env.REACT_APP_CLIENT_ID}&redirect_uri=${process.env.REACT_APP_DEV_REDIRECT_URI}&response_type=${process.env.REACT_APP_RESPONSE_TYPE}&scope=${process.env.REACT_APP_SCOPE}`}>Login to Spotify</a>
-                            : <button onClick={logout}>Logout</button>}
-
-                        {/* {token ?
-                            <form onSubmit={searchArtists}>
-                                <input type="text" onChange={e => setSearchKey(e.target.value)}/>
-                                <button className= "bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded-full"type={"submit"}>Search</button>
-                            </form>
-
-                            : <h2>Please login</h2>
-                        }
-                        {renderArtists()} */}
+                        <a href={`${process.env.REACT_APP_AUTHORIZE_URL}?client_id=${process.env.REACT_APP_CLIENT_ID}&redirect_uri=${process.env.REACT_APP_DEV_REDIRECT_URI}&response_type=${process.env.REACT_APP_RESPONSE_TYPE}&scope=${process.env.REACT_APP_SCOPE}`}>Login to Spotify</a>
+                        : <button onClick={logout}>Logout</button>}
                         
                     </header>
                     </>
     );    
     }
-        // return(
-        //     <>
-        //     <h1 className="text-3xl font-bold underline text-yellow">Welcome</h1>
-        //      <h1>{userId}</h1>
-        //     <img src={userImage} alt="missing"/>
-        //     <header className="App-header">
-        //                     {!token ?
-        //                         <a href={`${process.env.REACT_APP_AUTHORIZE_URL}?client_id=${process.env.REACT_APP_CLIENT_ID}&redirect_uri=${process.env.REACT_APP_DEV_REDIRECT_URI}&response_type=${process.env.REACT_APP_RESPONSE_TYPE}&scope=${process.env.REACT_APP_SCOPE}`}>Login to Spotify</a>
-        //                         : <button onClick={logout}>Logout</button>}
-
-        //                     {token ?
-        //                         <form onSubmit={searchArtists}>
-        //                             <input type="text" onChange={e => setSearchKey(e.target.value)}/>
-        //                             <button className= "bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded-full"type={"submit"}>Search</button>
-        //                         </form>
-
-        //                         : <h2>Please login</h2>
-        //                     }
-        //                     {renderArtists()}
-
-                            
-        //        </header>
-        //      </>
-        // );      
-
-
 
 export default Login;
