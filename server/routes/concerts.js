@@ -8,4 +8,9 @@ router.post("/", concerts.createConcert);
 router.put("/:name/:id", concerts.updateConcert);
 router.delete("/:name/:id", concerts.destroyConcert);
 
+router.post("/:name/:id/playlists", concerts.newPlaylist);
+router.get("/:name/:id1/playlists/:id2/edit", concerts.editPlaylist);
+router.put("/:name/:id1/playlists/:id2", concerts.updatePlaylist);
+router.delete("/:name/:id1/playlists/:id2", concerts.deletePlaylist);
+
 module.exports = router;

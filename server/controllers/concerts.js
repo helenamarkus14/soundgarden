@@ -147,6 +147,80 @@ const destroyConcert = (req, res) => {
     });
 }
 
+const newPlaylist = (req, res) => {
+    db.Concert.findById(req.params.id, (err, concert) => {
+        let playlistData = {
+            name: req.body.name,
+            description: req.body.description,
+        }
+        concert.playlists.push(playlistData);
+        concert.save(function() {
+            if (err)
+                return res.status(400).json({
+                    message: "Failed to create a playlist under a concert",
+                    error: err,
+                });
+                return res.status(200).json({
+                    message: "Successfully created a playlist under a concert",
+                    data: concert,
+                });
+        });
+    });
+};
+
+const editPlaylist = (req, res) => {
+    db.Concert.findOne({_id:req.params.id1}, (err, concert) => {
+        const concertPlaylist = concert.playlists.id(req.params.id2);
+        const context = {playlists: concertPlaylist};
+            if(err)
+            return res.status(400).json({
+                message: "Failed to show concert's playlist",
+                error: err,
+            });
+            return res.status(200).json({
+                message: "Successfully retrieved concert playlist info",
+                data: context,
+            });
+    });
+};
+
+const updatePlaylist = (req, res) => {
+    db.Concert.findOne({_id:req.params.id1}, (err, concert) => {
+        const concertPlaylist = concert.playlists.id(req.params.id2);
+        concertPlaylist.set(req.body);
+        concert.save(function() {
+            if(err)
+                return res.status(400).json({
+                    message: "Failed to update concert playlist",
+                    error: err,
+                });
+                return res.status(200).json({
+                    message: "Successfully updated concert playlist",
+                    data: concert,
+                });
+        });
+    });
+};
+
+const deletePlaylist = (req, res) => {
+    db.Concert.findOne({_id:req.params.id1}, (err, concert) => {
+        const concertPlaylist = concert.playlists.id(req.params.id2);
+        concertPlaylist.remove();
+        concert.save(function() {
+            if(err)
+                return res.status(400).json({
+                    message: "Failed to delete a concert playlist",
+                    error: err
+                });
+                return res.status(200).json({
+                    message: "Successfully deleted a concert playlist",
+                    data: concert
+            });
+        });
+    });
+};
+
+
 
 
 module.exports = {
@@ -156,4 +230,8 @@ module.exports = {
     createConcert,
     updateConcert,
     destroyConcert,
+    newPlaylist,
+    editPlaylist,
+    updatePlaylist,
+    deletePlaylist,
 }

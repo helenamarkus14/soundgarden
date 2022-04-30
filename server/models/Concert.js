@@ -2,6 +2,23 @@ const mongoose = require("mongoose");
 const Schema = mongoose.Schema;
 
 
+const playlistSchema = new Schema({
+    name: {
+        type: String,
+        required: true,
+    },
+    description: {
+        type: String,
+        required: false,
+    },
+    concerts: {
+        type: Schema.Types.ObjectId, ref:"Concert"
+    },
+    user: {
+        type: Schema.Types.ObjectId, ref:"User"
+    }
+})
+
 const concertSchema = new Schema({
     artist: {
         type: String,
@@ -31,7 +48,7 @@ const concertSchema = new Schema({
         type: String,
         required: true,
     },
-    playlists: [{ type: Schema.Types.ObjectId, ref: "Playlist" }],
+    playlists: [playlistSchema],
 });
 
 const Concert = mongoose.model("Concert", concertSchema);

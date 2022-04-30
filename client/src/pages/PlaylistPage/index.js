@@ -7,13 +7,12 @@ const PlaylistPage = () => {
     const [authToken, setAuthToken] = useState();
     const [userId, setUserId] = useState();
     const [userPlaylists, setUserPlaylists] = useState([]);
-    const [playlistImages, setPlaylistImages] = useState([]);
 
     const getInfo = () => {
         setAuthToken(localStorage.getItem("token"));
         setUserId(localStorage.getItem("id"));
     }
-    // console.log(userPlaylists[6].images[0].url)
+
     const renderPlaylists = () => {
         return userPlaylists.map(playlist=> (
             <>
@@ -32,8 +31,9 @@ const PlaylistPage = () => {
         ))
     }
 
-    const getPlaylists = async () => {
-        await axios('https://api.spotify.com/v1/me/playlists', {
+
+    const getPlaylists = () => {
+         axios('https://api.spotify.com/v1/me/playlists', {
             'method': 'GET',
             'headers': {
                 'Content-Type': 'application/json',
@@ -42,16 +42,14 @@ const PlaylistPage = () => {
             }
           }).then(response=> {
             setUserPlaylists(response.data.items);
-            
-            setPlaylistImages(response.data.items.images)
-            console.log(response.data.items)
-          
+
           }).catch(error => console.log(error))
     }
 
 
     useEffect(() => {
         getInfo();
+        getPlaylists();
     }, [])
 
 
@@ -64,12 +62,23 @@ const PlaylistPage = () => {
         <div>
             <Search />
         </div>
-        <button onClick={getPlaylists}>Get My Playlists</button>
-    <div className="grid lg:grid-cols-3">
-        <h2 className="mt-6 mb-1 px-7 text-2xl font-extrabold tracking-wide lg:text-3xl">{userId}'s Playlists</h2>
-        {renderPlaylists()}
+
+        <h2>{userId}'s Playlists</h2>
+
         <div className="flex-auto">
         </div>
+
+            {userPlaylists.map((playlist) => {
+                return(
+                    <>
+                    <h3>{playlist.id}</h3>
+                    <h3>{playlist.name}</h3>
+                    <a href={playlist.external_urls.spotify}> Link To Playlist</a>
+                    <img src={playlist.images[0].url}/>
+                    </>
+                )
+            })}
+
     </div>
    </div>
     </>

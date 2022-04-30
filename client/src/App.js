@@ -13,6 +13,7 @@ import CreatePlaylist from "./pages/CreatePlaylist";
 import CreateConcert from "./pages/CreateConcert"
 import ConcertView from "./components/ConcertView";
 import UsersPage from "./pages/UsersPage";
+import ConcertPlaylistPage from "./pages/ConcertPlaylistPage";
 
 
 function App() {
@@ -25,6 +26,7 @@ function App() {
         <Route path="/" element={<SoundGardenApp />}/>
         <Route path="/concerts/:name" element={<ConcertPage />}/>
         <Route path="/concerts/:name/:id" element={<ConcertView/>}/>
+        <Route path="/concerts/:name/:id/playlist" element={<ConcertPlaylistPage/>}/>
         <Route path="/playlists" element={<PlaylistPage/>}/>
         <Route path="/concerts/new" element={<CreateConcert/>}/>
         <Route path="/users" element={<UsersPage/>}/>

@@ -10,7 +10,7 @@ const userConcert = (id) => {
 }
 
 const showConcert = (name, id) => {
-    return apiClient.get(`/concerts/${name}/${id}`)
+    return apiClient.get(`/concerts/${name}/${id}/playlist`)
 }
 
 const createConcert = (data) => {
@@ -25,4 +25,22 @@ const destroyConcert = (name, id) => {
     return apiClient.delete(`/concerts/${name}/${id}`);
 }
 
-export {indexConcert, userConcert, showConcert, createConcert, updateConcert, destroyConcert};
+const newPlaylist = (name, id, data) => {
+    return apiClient.post(`/concerts/${name}/${id}/playlists`, data);
+}
+
+const editPlaylist = (name, id1, id2, data) => {
+    return apiClient.put(`/concerts/${name}/${id1}/playlists/${id2}/edit`, data);
+}
+
+const updatePlaylist = (name, id1, id2, data) => {
+    return apiClient.put(`/concerts/${name}/${id1}/playlists/${id2}`, data);
+}
+
+const deletePlaylist = (name, id1, id2) => {
+    return apiClient.delete(`/concerts/${name}/${id1}/playlists/${id2}`);
+}
+
+
+
+export {indexConcert, userConcert, showConcert, createConcert, updateConcert, destroyConcert, newPlaylist, editPlaylist, updatePlaylist, deletePlaylist};
