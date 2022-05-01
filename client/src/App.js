@@ -25,8 +25,9 @@ import DashboardPage from "./pages/DashboardPage"
 function App() {
 
   return (
-    <div className="App h-screen bg-local bg-gradient-to-t from-stone-800 to-teal-400 bg-cover bg-center overflow-auto">
-    {/* // <div className="app"> */}
+
+    <div className="App h-screen bg-local bg-gradient-to-t from-stone-800 to-teal-400 overflow-auto">
+
      <NavBar /> 
       
      <Routes>
