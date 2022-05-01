@@ -82,7 +82,7 @@ function Login() {
         <>
 
             <div className="flex">
-                <img src={userImage ? userImage : "/images/SGLogo.jpg"} className= "h-24 w-24 rounded-full" alt="missing"/>
+                <img src={userImage ? userImage : "/images/SGLogo.jpeg"} className= "h-24 w-24 rounded-full" alt="missing"/>
                 <h1 className="text-3xl font-bold text-yellow mt-6 ml-1">{userId}</h1>
        
             </div>

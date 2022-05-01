@@ -32,7 +32,6 @@ const PlaylistEdit = () => {
 
     const getPlaylistInfo = () => {
          concertService.showPlaylist(username, id1, id2).then((res) => {
-             console.log(res);
             setName(res.data.data.playlists.name)
             setDescription(res.data.data.playlists.description);
             setSpotify_Url(res.data.data.playlists.spotify_url);
