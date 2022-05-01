@@ -26,7 +26,7 @@ const PlaylistForm = () => {
     }
 
   return (
-    <div className="max-w-screen-xl px-4 py-16 mx-auto sm:px-6 lg:px-8">
+    <div className=" px-4 py-16 mx-auto sm:px-6 lg:px-8 bg-gradient-to-t from-stone-800 to-teal-400 bg-cover bg-center h-screen">
     
         <form className= "p-8 mt-6 mb-0 bg-black space-y-4 border border-solid border-turquoise rounded-lg shadow-2xl"autoComplete="off">
         <h2 className="float-left max-w-lg mx-auto text-turquoise">Enter Playlist Details</h2>
