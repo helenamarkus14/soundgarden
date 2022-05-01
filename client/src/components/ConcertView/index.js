@@ -29,9 +29,14 @@ const ConcertView = () =>  {
         })
     }
 
+    const openSpotifyPlaylistLink = (url) => {
+        window.open(url, "_blank");
+    }
+
+
     useEffect(() => {
         getConcertInfo();
-    }, [getConcertInfo])
+    }, [])
    
   return (
     <div className="max-w-screen-xl px-4 py-16 mx-auto sm:px-6 lg:px-8">
@@ -50,6 +55,7 @@ const ConcertView = () =>  {
                 
                 <h3>{playlist.name}</h3>
                 <h4>{playlist.description}</h4>
+                <button className="text-yellow bg-black font-bold rounded-full px-3 py-1 text-xs outline-none focus:outline-none mr-1 mb-1 ease-linear transition-all duration-150" type="button" onClick={() => openSpotifyPlaylistLink(playlist.spotify_url)}>Open Spotify Playlist</button>
                 <NavLink to={`/concerts/${name}/${id}/playlists/${playlist._id}/edit`} 
                 element={<PlaylistEdit />} className="text-yellow bg-black font-bold rounded-full px-3 py-1 text-xs outline-none focus:outline-none mr-1 mb-1 ease-linear transition-all duration-150" type="button"> Edit Playlist </NavLink>
                 </>

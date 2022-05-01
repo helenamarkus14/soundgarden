@@ -1,11 +1,13 @@
 import React, {useState, useEffect} from 'react'
 import * as concertService from "../../api/concert.service"
 import { useNavigate, useParams } from 'react-router-dom';
+import Playlist from '../Playlist';
 
 
 const PlaylistEdit = () => {
     const [name, setName] = useState("");
     const [description, setDescription] = useState("");
+    const [spotify_url, setSpotify_Url] = useState("");
     const navigate = useNavigate();
     let {id1} = useParams();
     let {id2} = useParams();
@@ -30,8 +32,10 @@ const PlaylistEdit = () => {
 
     const getPlaylistInfo = () => {
          concertService.showPlaylist(username, id1, id2).then((res) => {
+             console.log(res);
             setName(res.data.data.playlists.name)
             setDescription(res.data.data.playlists.description);
+            setSpotify_Url(res.data.data.playlists.spotify_url);
          })
     }
 
@@ -67,10 +71,16 @@ useEffect(() => {
                     />
                 </div>
             </div>
+            <div className="date flex flex-row">
+                <div className="flex flex-row pr-2">
+                <button className="text-yellow bg-black font-bold rounded-full px-3 py-1 text-xs outline-none focus:outline-none mr-1 mb-1 ease-linear transition-all duration-150" type="button" onClick={() => window.open(spotify_url)}>Open Spotify Playlist</button>
+                </div>
+            </div>
            
             <button type="button" className="block w-48 justify-center px-5 py-3 text-sm font-medium text-white bg-yellow hover:bg-opacity-75 rounded-lg"onClick={handleSubmit}> Update Playlist</button>
             <button type="button" className="block w-48 justify-center px-5 py-3 text-sm font-medium text-white bg-yellow hover:bg-opacity-75 rounded-lg"onClick={deletePlaylist}> Delete Playlist</button>
         </form>
+        <Playlist/>
     </div>
   )
 }

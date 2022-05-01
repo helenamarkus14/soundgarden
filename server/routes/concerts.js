@@ -10,7 +10,7 @@ router.delete("/:name/:id", concerts.destroyConcert);
 
 router.post("/:name/:id/playlists", concerts.newPlaylist);
 router.get("/:name/:id1/playlists/:id2/edit", concerts.showPlaylist);
-router.put("/:name/:id1/playlists/:id2", concerts.updatePlaylist);
+router.put("/:name/:id1/playlists/:id2/edit", concerts.updatePlaylist);
 router.delete("/:name/:id1/playlists/:id2", concerts.deletePlaylist);
 
 module.exports = router;

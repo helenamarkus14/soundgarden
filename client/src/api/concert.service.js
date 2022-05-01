@@ -34,7 +34,7 @@ const showPlaylist = (name, id1, id2, data) => {
 }
 
 const updatePlaylist = (name, id1, id2, data) => {
-    return apiClient.put(`/concerts/${name}/${id1}/playlists/${id2}`, data);
+    return apiClient.put(`/concerts/${name}/${id1}/playlists/${id2}/edit`, data);
 }
 
 const deletePlaylist = (name, id1, id2) => {

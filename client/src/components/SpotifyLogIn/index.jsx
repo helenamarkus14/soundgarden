@@ -90,6 +90,7 @@ function Login() {
                         : <button onClick={logout}>Logout</button>}
                         
                     </header>
+                    <Search />
                     </>
     );    
     }
