@@ -9,6 +9,7 @@ module.exports = {
         'turquoise': '#45F0DF',
         'yellow': '#F3CA40',
         'black': '#33312E',
+      
         
   
   
@@ -16,8 +17,14 @@ module.exports = {
       backgroundImage: {
         'crowd': "url('/public/images/crowd.jpg')",
         'logo': "url('/public/images/SGLogo.jpg')",
+        'crowdblackwhite': "url('/public/images/crowdblackwhite.jpg')",
       },
 
+    },
+    fontFamily: {
+      sans: ['Raleway', 'sans-serif'],
+      body: ['Raleway', 'sans-serif'],
+      heading: ['Raleway', 'sans-serif'],
     },
   },
   plugins: [],
