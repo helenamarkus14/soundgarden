@@ -21,7 +21,6 @@ const Search = () => {
   }
 
 
-
     const searchBy = () => {
         axios("https://api.spotify.com/v1/search", {
             'method': 'GET',
@@ -47,12 +46,16 @@ const Search = () => {
     <div>
         <div className="flex justify-center">
           <div className="mb-3 xl:w-96">
-            <div className="relative flex flex-wrap items-stretch w-full mb-4">
-              <input className="min-w-0 w-full px-3 py-1.5 text-gray-700 border border-solid rounded-lg transition ease-in-out m-0 focus:text-gray-700 focus:bg-white focus:border-yellow-600 focus:outline-none" type="text" placeholder="Search" onChange={e => setSearchForKey(e.target.value)}/>
-             <button onClick={searchBy}>Search and Discover Artists</button>
+            <div className="relative flex items-stretch w-full mb-4 mt-4">
+              <input className="min-w-0 w-52 px-3 py-1.5 text-gray-700 border border-solid rounded-l-md transition ease-in-out m-0 focus:text-gray-700 focus:bg-white focus:border-yellow-600 focus:outline-none" type="text" placeholder="Search" onChange={e => setSearchForKey(e.target.value)}/>
+                <button className="inline-block px-3 py-2.5 bg-stone-400 rounded-r-md" onClick={searchBy}>
+                  <svg aria-hidden="true" focusable="false" data-prefix="fas" data-icon="search" class="w-4" role="img" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512">
+                  <path fill="currentColor" d="M505 442.7L405.3 343c-4.5-4.5-10.6-7-17-7H372c27.6-35.3 44-79.7 44-128C416 93.1 322.9 0 208 0S0 93.1 0 208s93.1 208 208 208c48.3 0 92.7-16.4 128-44v16.3c0 6.4 2.5 12.5 7 17l99.7 99.7c9.4 9.4 24.6 9.4 33.9 0l28.3-28.3c9.4-9.4 9.4-24.6.1-34zM208 336c-70.7 0-128-57.2-128-128 0-70.7 57.2-128 128-128 70.7 0 128 57.2 128 128 0 70.7-57.2 128-128 128z"></path>
+                </svg>
+                </button>
              {renderArtists()}
-              </div>
-             </div>
+            </div>
+          </div>
         </div>
      </div>  
   )
@@ -60,24 +63,3 @@ const Search = () => {
 
   export default Search;
 
-
-
-  // <img
-  //   class="group-hover:scale-105 transition-transform duration-500 object-cover w-full h-[350px] sm:h-[450px]"
-  //   src="../../photos/tee-green-hanger-2.png"
-  //   alt="Basic Tee Product"
-  // />
-
-  // <div class="relative pt-4 bg-white">
-  //   <h3 class="text-xs text-gray-700 group-hover:underline group-hover:underline-offset-4">
-  //     Basic Tee
-  //   </h3>
-
-  //   <p class="mt-2">
-  //     <span class="sr-only"> Regular Price </span>
-
-  //     <span class="tracking-wider">
-  //       £24.00 GBP
-  //     </span>
-  //   </p>
-  // </div>

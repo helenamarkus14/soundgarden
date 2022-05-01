@@ -7,8 +7,8 @@ const ConcertPage = () => {
 const [concerts, setConcerts] = useState([]);
 const {name} = useParams();
 
-const fetchConcerts = async () => {
-    await concertService.userConcert(name).then((res) => {
+const fetchConcerts = () => {
+     concertService.userConcert(name).then((res) => {
         setConcerts(res.data.data.reverse());
     })
 }
