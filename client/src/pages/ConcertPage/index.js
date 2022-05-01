@@ -14,12 +14,12 @@ const fetchConcerts = async () => {
 }
 useEffect(() => {
     fetchConcerts();
-    
 	}, []);
+
   return (
     <div className="overflow-auto">
-        <NavLink to="/concerts/new"><button className="text-yellow bg-black font-bold rounded-full px-3 py-1 text-xs outline-none focus:outline-none mr-1 mb-1 ease-linear transition-all duration-150" type="button">+ Create New Concert</button></NavLink>
-        
+        <NavLink to="/concerts/new"><button className="h-10 text-black bg-yellow font-bold rounded-full px-3 py-1 text-xs outline-none focus:outline-none ml-10 mt-3 mr-1 mb-1 ease-linear transition-all duration-150" type="button">+ Create New Concert</button></NavLink>
+        <div className="grid lg:grid-cols-3">
         {concerts.map((concert, i) => {
             return (
                 <>
@@ -35,6 +35,7 @@ useEffect(() => {
                 </>
             )
         })}
+       </div> 
     </div>
   )
 }

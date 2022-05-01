@@ -45,9 +45,15 @@ const Search = () => {
     
   return (
     <div>
-        <input type="text" onChange={e => setSearchForKey(e.target.value)}/>
+        <div className="flex justify-center">
+          <div className="mb-3 xl:w-96">
+            <div className="relative flex flex-wrap items-stretch w-full mb-4">
+              <input className="min-w-0 w-full px-3 py-1.5 text-gray-700 border border-solid rounded-lg transition ease-in-out m-0 focus:text-gray-700 focus:bg-white focus:border-yellow-600 focus:outline-none" type="text" placeholder="Search" onChange={e => setSearchForKey(e.target.value)}/>
              <button onClick={searchBy}>Search and Discover Artists</button>
              {renderArtists()}
+              </div>
+             </div>
+        </div>
      </div>  
   )
   }

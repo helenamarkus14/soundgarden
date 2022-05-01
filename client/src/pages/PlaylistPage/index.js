@@ -53,28 +53,22 @@ const PlaylistPage = () => {
   return (
     <>
     <div>
-        <div>
-        <NavLink to="/playlists/new"><button className="text-yellow bg-black font-bold rounded-full px-3 py-1 text-xs outline-none focus:outline-none mr-1 mb-1 ease-linear transition-all duration-150" type="button">+ Create Spotify Playlist</button></NavLink>
-        </div>
-        <div>
+        <div className="flex-auto align-middle justify-center text-center">
             <Search />
+            <h2 className="mt-5 font-extrabold text-5xl">My Spotify Playlists</h2>
         </div>
 
-        <h2 className="items-center justify-center">{userId}'s Playlists</h2>
-
-        <div className="flex-auto">
-        </div>
             <div className="grid lg:grid-cols-3">
             {userPlaylists.map((playlist) => {
                 return(
                     <>
             
                 <div className="w-96 mt-6 ml-8 bg-white pb-2 rounded-lg border border-black shadow-md dark:bg-black dark:border-black">
-                    <h2 className="mt-6 mb-1 px-7 text-2xl font-extrabold tracking-wide lg:text-3xl">{playlist.name}</h2>
+                    <h2 className="mt-6 mb-1 px-7 text-2xl font-extrabold tracking-wide lg:text-2xl text-white">{playlist.name}</h2>
                         <div className="grid lg:grid-cols-3">
-                            <div key={playlist.id}>
-                            <a href={playlist.external_urls.spotify}> Link To Playlist</a>
-                            <img src={playlist.images[0].url} alt="no image found"/>
+                            <div className="col-start-2 text-center" key={playlist.id}>
+                            <a className="text-yellow" href={playlist.external_urls.spotify}> Link To Playlist</a>
+                            <img className="rounded-lg" src={playlist.images[0].url} alt="no image found"/>
                             </div>
                         </div>
                 </div>
