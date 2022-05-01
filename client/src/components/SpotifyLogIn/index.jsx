@@ -5,6 +5,7 @@ import * as userService from "../../api/user.service";
 import apiClient from "../../api/axios.config";
 import Search from "../SpotifySearch";
 
+
 function Login() {
     const [token, setToken] = useState("")
     const [searchKey, setSearchKey] = useState("")
@@ -79,6 +80,7 @@ function Login() {
     }, [])
     return(
         <>
+
             <div className="flex">
                 <img src={userImage ? userImage : "/images/SGLogo.jpg"} className= "h-24 w-24 rounded-full" alt="missing"/>
                 <h1 className="text-3xl font-bold text-yellow mt-6 ml-1">{userId}</h1>
@@ -92,6 +94,7 @@ function Login() {
                     </header>
                     <Search />
                     </>
+                    
     );    
     }
 

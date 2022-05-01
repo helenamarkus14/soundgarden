@@ -17,6 +17,7 @@ module.exports = {
         'crowd': "url('/public/images/crowd.jpg')",
         'logo': "url('/public/images/SGLogo.jpg')",
       },
+
     },
   },
   plugins: [],
