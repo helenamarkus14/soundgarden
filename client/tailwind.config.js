@@ -9,6 +9,7 @@ module.exports = {
         'turquoise': '#45F0DF',
         'yellow': '#F3CA40',
         'black': '#33312E',
+
       },
       backgroundImage: {
         'crowd': "url('/public/images/crowd.jpg')",
@@ -19,7 +20,8 @@ module.exports = {
       sans: ['Raleway', 'sans-serif'],
       body: ['Raleway', 'sans-serif'],
       heading: ['Raleway', 'sans-serif'],
-    }
+    },
+
   },
   plugins: [],
 }

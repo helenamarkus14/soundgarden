@@ -38,14 +38,14 @@ const Dashboard = () => {
     }, [])
 
     return(
-        <div className="bg-crowd bg-cover bg-center h-full">  
-        <div className="p-5 w-screen mx-auto bg-black bg-opacity-70 rounded-xl shadow-md flex flex-col items-center overflow-y-auto touch-auto space x-4 border-2 border-turquoise mb-10">
+        <div className="">  
+        <div className="mt-10 p-5 w-6/12 mx-auto bg-black bg-opacity-70 rounded-xl shadow-md flex flex-col items-center overflow-y-auto touch-auto space x-4 border-2 border-turquoise mb-10">
             <div className="flex flex-col">
             <h1 className="text-yellow text-center text-4xl pb-2">Welcome to Sound Garden</h1>
 
             <div className="flex justify-center items-center flex-row mb-10">
         <img src={userImage ? userImage : "/images/SGLogo.jpeg"} className=" flex flex-col items-center justify-center h-24 w-24 rounded-full center" alt="missing"/>
-        <h1 className="text-3xl font-bold text-red mt-2 ml-1 ">{userId}</h1>
+        <h1 className="text-3xl font-bold text-turquoise mt-2 ml-1 ">{userId}</h1>
         </div>
         </div> 
 
@@ -62,7 +62,7 @@ const Dashboard = () => {
                         </span>
                 
                         <div class="mt-1">
-                        <h2 class="text-lg font-bold mt-1 text-center text-gray-300">Add new concert to your memories</h2>
+                        <h2 class="text-lg font-bold pb-7 text-center text-gray-300">Add new concert to your memories</h2>
                         </div>
                     </div>
                     </NavLink>
@@ -75,7 +75,7 @@ const Dashboard = () => {
                             </span>
                     
                             <div class="m-auto">
-                            <h2 class="text-lg text-center font-bold mt-1 text-gray-300">Create Spotify playlist for an upcoming show</h2>
+                            <h2 class="text-lg text-center pb-8 font-bold text-gray-300">View your Spotify playlists</h2>
                             </div>
                         </div>
                     </NavLink>
@@ -88,7 +88,7 @@ const Dashboard = () => {
                             </span>
                     
                             <div class="">
-                            <h2 class="text-lg font-bold text-center text-gray-300">Discover what other concert goers are listening to</h2>
+                            <h2 class="text-lg font-bold text-center text-gray-300 pb-1">Discover new music from fellow concert goers</h2>
                     
                             </div>
                         </div>

@@ -58,7 +58,7 @@ const PlaylistPage = () => {
             <h2 className="mt-5 font-extrabold text-5xl">My Spotify Playlists</h2>
         </div>
 
-            <div className="grid lg:grid-cols-3">
+            <div className="grid lg:grid-cols-3 overflow-hidden">
             {userPlaylists.map((playlist) => {
                 return(
                     <>

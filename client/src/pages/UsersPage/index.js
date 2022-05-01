@@ -19,7 +19,8 @@ useEffect(() => {
     
   return (
       <>
-      <h2 className="mt-6 mb-1 px-7 text-2xl font-extrabold tracking-wide lg:text-3xl">Users</h2>
+      <h2 className="mt-6 mb-1 px-7 text-2xl font-bold tracking-wide lg:text-3xl">Users</h2>
+    
     <div className="grid lg:grid-cols-3">
         {/* <NavLink to="/concerts/new"><button className="text-yellow bg-black font-bold rounded-full px-3 py-1 text-xs outline-none focus:outline-none mr-1 mb-1 ease-linear transition-all duration-150" type="button">+ Create New Concert</button></NavLink> */}
         
@@ -38,6 +39,7 @@ useEffect(() => {
             )
         })}
     </div>
+  
     </>
   )
 }
