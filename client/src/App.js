@@ -7,6 +7,7 @@ import NavBar from "./components/NavBar";
 import SoundGardenApp from "./pages/SignInPage";
 import Login from "./components/SpotifyLogIn";
 import Search from "./components/SpotifySearch";
+import HomePage from "./pages/HomePage";
 import ConcertPage from "./pages/ConcertPage";
 import PlaylistPage from "./pages/PlaylistPage";
 import CreatePlaylist from "./pages/CreatePlaylist";
@@ -14,16 +15,19 @@ import CreateConcert from "./pages/CreateConcert"
 import ConcertView from "./components/ConcertView";
 import UsersPage from "./pages/UsersPage";
 import ConcertPlaylistPage from "./pages/ConcertPlaylistPage";
+import DashboardPage from "./pages/DashboardPage"
 
 
 function App() {
 
   return (
-    <div className="App h-screen bg-gradient-to-t from-gray-800 to-black-600">
+    <div className="App h-screen bg-scroll bg-gradient-to-t from-gray-800 to-black-600">
      <NavBar /> 
       
      <Routes>
-        <Route path="/" element={<SoundGardenApp />}/>
+        <Route path="/signin" element={<SoundGardenApp />}/>
+        <Route path="/dashboard" element={<DashboardPage />}/>
+        <Route path="/" element={<HomePage />}/>
         <Route path="/concerts/:name" element={<ConcertPage />}/>
         <Route path="/concerts/:name/:id" element={<ConcertView/>}/>
         <Route path="/concerts/:name/:id/playlist" element={<ConcertPlaylistPage/>}/>

@@ -1,11 +1,11 @@
 import {NavLink} from 'react-router-dom';
 import {useState, useEffect} from 'react'
+import Login from '../NavUser';
 import "./navbar.css"
 
 const NavBar = () => {
     const [navbarOpen, setNavbarOpen] = useState(false);
     const id = localStorage.getItem("id");
-  
 
     return (
     <>
@@ -14,10 +14,10 @@ const NavBar = () => {
           <div className="w-full relative flex justify-between lg:w-auto lg:static lg:block lg:justify-start">
             <a
               className="text-sm font-bold leading-relaxed inline-block mr-4 py-2 whitespace-nowrap uppercase text-red"
-              href="/"
+              href="/dashboard"
             >
              <div className="flex hover:text-turquoise"> 
-             <img src="/images/SGLogo.jpg" className="mr-1 h-6 w-6 rounded-full hover:text-turquoise" alt="" /> Sound Garden
+             <img src="/images/SGLogo.jpeg" className="mr-1 h-6 w-6 rounded-full hover:text-turquoise" alt="" /> Sound Garden
              </div>  
             </a>
             <button
@@ -39,7 +39,7 @@ const NavBar = () => {
               <li className="nav-item">
                 <a
                   className="px-3 py-2 hover:text-turquoise flex items-center text-xs uppercase font-bold leading-snug text-red hover:opacity-75"
-                  href="/"
+                  href="/dashboard"
                 >
                   <span className="ml-2">Home</span>
                 </a>
@@ -69,6 +69,9 @@ const NavBar = () => {
                 >
                  <span className="ml-2">Users</span>
                 </a>
+              </li>
+              <li className="nav-item">
+               <Login/>
               </li>
 
             </ul>
