@@ -15,7 +15,11 @@ import CreateConcert from "./pages/CreateConcert"
 import ConcertView from "./components/ConcertView";
 import UsersPage from "./pages/UsersPage";
 import ConcertPlaylistPage from "./pages/ConcertPlaylistPage";
+import ConcertEdit from "./components/ConcertEdit";
+import PlaylistForm from "./components/PlaylistForm";
+import PlaylistEdit from "./components/PlaylistEdit";
 import DashboardPage from "./pages/DashboardPage"
+
 
 
 function App() {
@@ -30,7 +34,9 @@ function App() {
         <Route path="/" element={<HomePage />}/>
         <Route path="/concerts/:name" element={<ConcertPage />}/>
         <Route path="/concerts/:name/:id" element={<ConcertView/>}/>
-        <Route path="/concerts/:name/:id/playlist" element={<ConcertPlaylistPage/>}/>
+        <Route path="/concerts/:name/:id/edit" element={<ConcertEdit/>}/>
+        <Route path="/concerts/:name/:id/playlists" element={<PlaylistForm/>}/>
+        <Route path="/concerts/:name/:id1/playlists/:id2/edit" element={<PlaylistEdit/>}/>
         <Route path="/playlists" element={<PlaylistPage/>}/>
         <Route path="/concerts/new" element={<CreateConcert/>}/>
         <Route path="/users" element={<UsersPage/>}/>

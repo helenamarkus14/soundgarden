@@ -168,7 +168,7 @@ const newPlaylist = (req, res) => {
     });
 };
 
-const editPlaylist = (req, res) => {
+const showPlaylist = (req, res) => {
     db.Concert.findOne({_id:req.params.id1}, (err, concert) => {
         const concertPlaylist = concert.playlists.id(req.params.id2);
         const context = {playlists: concertPlaylist};
@@ -231,7 +231,7 @@ module.exports = {
     updateConcert,
     destroyConcert,
     newPlaylist,
-    editPlaylist,
+    showPlaylist,
     updatePlaylist,
     deletePlaylist,
 }

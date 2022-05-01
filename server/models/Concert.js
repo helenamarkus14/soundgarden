@@ -10,9 +10,10 @@ const playlistSchema = new Schema({
     description: {
         type: String,
         required: false,
-    },
-    concerts: {
-        type: Schema.Types.ObjectId, ref:"Concert"
+    }, 
+    spotify_url: {
+        type: String,
+        required: false,
     },
     user: {
         type: Schema.Types.ObjectId, ref:"User"
