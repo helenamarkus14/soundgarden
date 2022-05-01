@@ -4,6 +4,7 @@ import axios from 'axios';
 import * as userService from "../../api/user.service";
 import apiClient from "../../api/axios.config";
 
+
 function Login() {
     const [token, setToken] = useState("")
     const [searchKey, setSearchKey] = useState("")
@@ -84,28 +85,19 @@ function Login() {
     }, [])
     return(
         <>
-        <div className="flex">
-        <img src={userImage ? userImage : "/images/SGLogo.jpg"} className= "h-24 w-24 rounded-full" alt="missing"/>
+        <div className="flex justify-center items-center flex-col">
+        <img src={userImage ? userImage : "/images/SGLogo.jpeg"} className=" flex flex-col items-center justify-center h-24 w-24 rounded-full center" alt="missing"/>
         <h1 className="text-3xl font-bold text-yellow mt-6 ml-1">{userId}</h1>
-       
+        {!token ?
+                
+                <button className="w-48 flex items-center justify-center mx-3 px-5 py-3 text-sm font-medium text-white bg-yellow hover:bg-opacity-75 rounded-lg"> <a href={`${process.env.REACT_APP_AUTHORIZE_URL}?client_id=${process.env.REACT_APP_CLIENT_ID}&redirect_uri=${process.env.REACT_APP_DEV_REDIRECT_URI}&response_type=${process.env.REACT_APP_RESPONSE_TYPE}&scope=${process.env.REACT_APP_SCOPE}`}>Login with Spotify</a></button> 
+                    : <button className="flex items-center justify-center w-24 text-sm mr-10 my-3 font-medium text-white bg-yellow hover:bg-opacity-75 rounded-lg" onClick={logout}>Logout</button>
+                             
+            } 
         </div>
-        <header className="App-header">
-                        {!token ?
-                            <a href={`${process.env.REACT_APP_AUTHORIZE_URL}?client_id=${process.env.REACT_APP_CLIENT_ID}&redirect_uri=${process.env.REACT_APP_PROD_REDIRECT_URI}&response_type=${process.env.REACT_APP_RESPONSE_TYPE}&scope=${process.env.REACT_APP_SCOPE}`}>Login to Spotify</a>
-                            : <button onClick={logout}>Logout</button>}
-
-                        {/* {token ?
-                            <form onSubmit={searchArtists}>
-                                <input type="text" onChange={e => setSearchKey(e.target.value)}/>
-                                <button className= "bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded-full"type={"submit"}>Search</button>
-                            </form>
-
-                            : <h2>Please login</h2>
-                        }
-                        {renderArtists()} */}
-                        
-                    </header>
+     
                     </>
+                    
     );    
     }
         // return(
