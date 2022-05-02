@@ -6,13 +6,13 @@ const Home = () => {
     return (
 
             <div className="bg-crowd bg-cover bg-center h-full"> 
-                <div className="p-5 w-6/12 mx-auto text-center bg-black bg-opacity- rounded-xl shadow-md flex flex-col border-2 border-turquoise">
+                <div className="p-5 w-6/12 mx-auto text-center bg-transparent rounded-xl flex flex-col">
                     <h1 className="text-red text-3xl font-bold">Welcome to Sound Garden</h1>
                     
                     <NavLink to="/signin"><button className="text-yellow bg-black font-bold rounded-full px-3 py-1 text-xs outline-none focus:outline-none mr-1 mb-1 ease-linear transition-all duration-150" type="button">Get Started</button></NavLink>
                     
                     
-                    <div className="container flex flex-row">
+                    <div className="container flex flex-row gap-2">
                                 <div class="transition ease-in-out delay-150 bg-red bg-opacity-50 hover:-translate-y-1 hover:scale-110 hover:bg-red hover:bg-opacity-80 duration-300 hover concerts p-5 w-screen mx-auto bg-black rounded-xl shadow-md flex flex-col items-center overflow-y-auto touch-auto space x-4 border-2 border-turquoise">
                             
                                 <span class="flex-shrink-0 p-4 bg-gray-800 rounded-lg">
