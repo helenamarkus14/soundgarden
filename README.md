@@ -16,6 +16,8 @@
     <img src="" alt="Logo" width="80" height="80">
   </a> -->
 
+Project Link: [https://github.com/helenamarkus14/soundgarden](https://github.com/helenamarkus14/soundgarden)
+
 <h3 align="center">Sound Garden</h3>
 
   <p align="center">
@@ -146,7 +148,6 @@ Don't forget to give the project a star! Thanks again!
 5. Open a Pull Request -->
 
 
-Project Link: [https://github.com/helenamarkus14/soundgarden](https://github.com/helenamarkus14/soundgarden)
 
 
 <p align="right">(<a href="#top">back to top</a>)</p>
