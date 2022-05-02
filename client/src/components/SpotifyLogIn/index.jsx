@@ -85,7 +85,7 @@ function Login() {
                 <h1 className="flex text-3xl font-bold text-yellow mt-6 ml-1">{userId}</h1>
             </div>
             <div className="text-center mt-5 shadow-lg">
-                <a className="bg-red hover:bg-yellow text-white font-bold py-2 px-4 rounded" href={`${process.env.REACT_APP_AUTHORIZE_URL}?client_id=${process.env.REACT_APP_CLIENT_ID}&redirect_uri=${process.env.REACT_APP_DEV_REDIRECT_URI}&response_type=${process.env.REACT_APP_RESPONSE_TYPE}&scope=${process.env.REACT_APP_SCOPE}`}>Connect to Spotify</a>
+                <a className="bg-red hover:bg-yellow text-white font-bold py-2 px-4 rounded" href={`${process.env.REACT_APP_AUTHORIZE_URL}?client_id=${process.env.REACT_APP_CLIENT_ID}&redirect_uri=${process.env.REACT_APP_PROD_REDIRECT_URI}&response_type=${process.env.REACT_APP_RESPONSE_TYPE}&scope=${process.env.REACT_APP_SCOPE}`}>Connect to Spotify</a>
             </div>
             <div className="max-w-sm rounded">
                 <div className="justify-center align-middle w-auto bg-stone-500 items-center text-center mt-5 rounded-md px-4 py-1">
