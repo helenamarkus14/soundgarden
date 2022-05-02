@@ -7,8 +7,6 @@
     <img src="" alt="Logo" width="80" height="80">
   </a> -->
 
-Project Link: [https://github.com/helenamarkus14/soundgarden](https://github.com/helenamarkus14/soundgarden)
-
 <h3 align="center">Sound Garden</h3>
 
   <p align="center">
