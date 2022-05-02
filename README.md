@@ -156,12 +156,12 @@ Don't forget to give the project a star! Thanks again!
 
 <!-- MARKDOWN LINKS & IMAGES -->
 Created by:
-Helena Markus
+<p>Helena Markus </p>
 [linkedin-shield]: https://img.shields.io/badge/-LinkedIn-black.svg?style=for-the-badge&logo=linkedin&colorB=555
 [linkedin-url]: https://linkedin.com/in/helena-markus 
-Denzel Samala
+<p>Denzel Samala</p>
 [linkedin-shield]: https://img.shields.io/badge/-LinkedIn-black.svg?style=for-the-badge&logo=linkedin&colorB=555
-[linkedin-url]: https://www.linkedin.com/in/dsamala/
+[linkedin-url]: https://www.linkedin.com/in/dsamala/ 
 
 
 <!-- [product-screenshot]: images/screenshot.png -->
