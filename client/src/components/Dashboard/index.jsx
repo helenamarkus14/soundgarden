@@ -66,7 +66,7 @@ const Dashboard = () => {
                         </div>
                     </div>
                     </NavLink>
-                    <NavLink to="/playlists/new">
+                    <NavLink to="/playlists">
                         <div class="w-96 transition ease-in-out delay-400 bg-black bg-opacity-70 hover:-translate-y-1 hover:scale-110 hover:bg-black hover:bg-opacity-80 duration-300 hover concerts p-5 mx-auto bg-black rounded-xl shadow-md flex flex-col items-center overflow-y-auto touch-auto space x-4 border-2 border-turquoise">
                             <span class="flex-shrink-0 p-4 bg-gray-800 rounded-lg">
                             <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="turquoise" stroke-width="2">

@@ -1,6 +1,5 @@
 import React, {useState, useEffect} from 'react'
 import axios from 'axios';
-import Search from '../../components/SpotifySearch';
 import { NavLink } from 'react-router-dom';
 
 const PlaylistPage = () => {
@@ -54,7 +53,6 @@ const PlaylistPage = () => {
     <>
     <div>
         <div className="flex-auto align-middle justify-center text-center">
-            <Search />
             <h2 className="mt-5 text-center font-extrabold text-5xl">My Spotify Playlists</h2>
         </div>
 

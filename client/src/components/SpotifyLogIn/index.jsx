@@ -80,20 +80,22 @@ function Login() {
     }, [])
     return(
         <>
-
-            <div className="flex">
-                <img src={userImage ? userImage : "/images/SGLogo.jpeg"} className= "h-24 w-24 rounded-full" alt="missing"/>
-                <h1 className="text-3xl font-bold text-yellow mt-6 ml-1">{userId}</h1>
-       
+            <div className="flex items-center justify-center">
+                <img src={userImage ? userImage : "/images/SGLogo.jpeg"} className= "flex h-24 w-24 rounded-full" alt="missing"/>
+                <h1 className="flex text-3xl font-bold text-yellow mt-6 ml-1">{userId}</h1>
             </div>
-                    <header className="App-header">
-                        {!token ?
-                        <a href={`${process.env.REACT_APP_AUTHORIZE_URL}?client_id=${process.env.REACT_APP_CLIENT_ID}&redirect_uri=${process.env.REACT_APP_DEV_REDIRECT_URI}&response_type=${process.env.REACT_APP_RESPONSE_TYPE}&scope=${process.env.REACT_APP_SCOPE}`}>Login to Spotify</a>
-                        : <button onClick={logout}>Logout</button>}
-                        
-                    </header>
-                    <Search />
-                    </>
+            <div className="text-center mt-5 shadow-lg">
+                <a className="bg-red hover:bg-yellow text-white font-bold py-2 px-4 rounded" href={`${process.env.REACT_APP_AUTHORIZE_URL}?client_id=${process.env.REACT_APP_CLIENT_ID}&redirect_uri=${process.env.REACT_APP_DEV_REDIRECT_URI}&response_type=${process.env.REACT_APP_RESPONSE_TYPE}&scope=${process.env.REACT_APP_SCOPE}`}>Connect to Spotify</a>
+            </div>
+            <div className="max-w-sm rounded">
+                <div className="justify-center align-middle w-auto bg-stone-500 items-center text-center mt-5 rounded-md px-4 py-1">
+                    <h3 className="text-white">By using this application, you are agreeing to Spotify's License Agreement as required <br></br>to log in or sign up.</h3>
+                </div>
+                <div className="text-center align-middle mt-5">
+                    <a className="bg-green-500 hover:bg-black hover:text-green-500 text-black rounded-md px-2 py-2" href="https://www.spotify.com/us/legal/end-user-agreement/">Spotify Terms and Conditions</a>
+                </div>
+            </div>
+        </>
                     
     );    
     }
