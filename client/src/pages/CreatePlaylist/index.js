@@ -4,7 +4,6 @@ const CreatePlaylist = () => {
 
     return (
 
-
         <Playlist />
     )
 }

@@ -1,5 +1,3 @@
-import Login from "../../components/SpotifyLogIn";
-import { NavLink } from "react-router-dom";
 import Home from "../../components/Home";
 
 const HomePage= () => {
@@ -7,10 +5,7 @@ const HomePage= () => {
     return (
 
         <Home />
- 
     )
-
-
 }
 
 
