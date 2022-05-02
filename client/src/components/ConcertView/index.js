@@ -39,22 +39,22 @@ const ConcertView = () =>  {
     }, [])
    
   return (
-    <div className="max-w-screen-xl px-4 py-16 mx-auto sm:px-6 lg:px-8">
-        <h3>Artist: {artist}</h3>
-        <h3>Date: {month}, {day}, {year}</h3>
-        <h3>Venue: {venue}</h3>
+    <div className="w-96 mt-6 ml-8 bg-white pb-2 rounded-lg border border-black shadow-md dark:bg-black dark:border-black">
+        <h3 className="mt-2 mb-2 px-7 text-2xl font-bold tracking-tight text-gray-900 dark:text-white">Artist: {artist}</h3>
+        <h3 className="mb-3 px-7 font-normal text-gray-700 dark:text-gray-400">Date: {month}, {day}, {year}</h3>
+        <h3 className="mb-3 px-7 font-normal text-gray-700 dark:text-gray-400">Venue: {venue}</h3>
         <NavLink to={`/concerts/${name}/${id}/edit`} 
-        element={<ConcertEdit />} className="text-yellow bg-black font-bold rounded-full px-3 py-1 text-xs outline-none focus:outline-none mr-1 mb-1 ease-linear transition-all duration-150" type="button"> Edit </NavLink>
+        element={<ConcertEdit />} className="text-yellow bg-black font-bold rounded-full px-3 py-1 text-xl outline-none focus:outline-none ml-5 mr-1 mb-1 ease-linear transition-all duration-150" type="button"> Edit </NavLink>
 
         <NavLink to={`/concerts/${name}/${id}/playlists`} 
-        element={<PlaylistForm />} className="text-yellow bg-black font-bold rounded-full px-3 py-1 text-xs outline-none focus:outline-none mr-1 mb-1 ease-linear transition-all duration-150" type="button"> Create A Playlist </NavLink>
-        <h3>Playlists</h3>
+        element={<PlaylistForm />} className="text-yellow bg-black font-bold rounded-full px-3 py-1 text-xl outline-none focus:outline-none ml-5 mr-1 mb-1 ease-linear transition-all duration-150" type="button"> Create A Playlist </NavLink>
+        <h3 className="text-white w-96 mt-6 ml-8 pb-2">Playlists</h3>
         {playlists.map((playlist) => {
             return (
                 <>
                 
-                <h3>{playlist.name}</h3>
-                <h4>{playlist.description}</h4>
+                <h3 className="w-96 mt-6 ml-8 bg-white pb-2 rounded-lg border border-black shadow-md dark:bg-black dark:border-black">{playlist.name}</h3>
+                <h4 className="mt-2 mb-2 px-7 text-2xl font-bold tracking-tight text-gray-900 dark:text-white">{playlist.description}</h4>
                 <button className="text-yellow bg-black font-bold rounded-full px-3 py-1 text-xs outline-none focus:outline-none mr-1 mb-1 ease-linear transition-all duration-150" type="button" onClick={() => openSpotifyPlaylistLink(playlist.spotify_url)}>Open Spotify Playlist</button>
                 <NavLink to={`/concerts/${name}/${id}/playlists/${playlist._id}/edit`} 
                 element={<PlaylistEdit />} className="text-yellow bg-black font-bold rounded-full px-3 py-1 text-xs outline-none focus:outline-none mr-1 mb-1 ease-linear transition-all duration-150" type="button"> Edit Playlist </NavLink>

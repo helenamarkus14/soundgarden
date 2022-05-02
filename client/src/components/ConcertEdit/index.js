@@ -96,8 +96,8 @@ const ConcertEdit = () =>  {
 
             </div>
 
-            <button onClick={handleSubmit}> Update Concert </button>
-            <button onClick={deleteConcert}> Delete Concert </button>
+            <button className="text-yellow bg-black font-bold transition ease-in-out delay-400 bg-black bg-opacity-70 hover:-translate-y-1 hover:scale-110 hover:bg-black duration-300 rounded-full px-3 py-1 text-xs outline-none focus:outline-none mr-1 mb-1"onClick={handleSubmit}> Update Concert </button>
+            <button className="text-turquoise bg-black font-bold transition ease-in-out delay-400 bg-black bg-opacity-70 hover:-translate-y-1 hover:scale-110 hover:bg-black duration-300 rounded-full px-3 py-1 text-xs outline-none focus:outline-none mr-1 mb-1 ease-linear transition-all duration-150"onClick={deleteConcert}> Delete Concert </button>
         </form>
     </div>
   )

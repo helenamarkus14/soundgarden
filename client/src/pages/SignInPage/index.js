@@ -1,8 +1,5 @@
 import React from "react";
-// import NavBar from "../../components/NavBar";
 import "./signin.css";
-import Playlist from "../../components/Playlist";
-
 import Login from "../../components/SpotifyLogIn";
 
 
