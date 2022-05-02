@@ -71,7 +71,7 @@ const NavBar = () => {
 
               <li className="nav-item">
                 <a
-                  className="px-3 py-2 flex items-center text-xs uppercase font-bold leading-snug text-red hover:opacity-75"
+                  className="px-3 py-2 flex hover:text-turquoise items-center text-xs uppercase font-bold leading-snug text-red hover:opacity-75"
                   href="/users"
                 >
                  <span className="ml-2">Users</span>
