@@ -23,7 +23,7 @@
     <a href="https://github.com/helenamarkus14/soundgarden"><strong>Explore the docs »</strong></a>
     <br />
     <br />
-    <a href="https://github.com/helenamarkus14/soundgarden">View Demo</a>
+    <a href="http://thesoundgarden.herokuapp.com/">View App deployed with Heroku</a>
     ·
     <a href="https://github.com/helenamarkus14/soundgarden/issues">Report Bug</a>
     ·
@@ -80,6 +80,7 @@ Sound Garden is an application to make playlist currated for upcoming concerts o
 * [Express.js](https://expressjs.com)
 * [MongoDB](https://mongodb.com/)
 * [SpotifyAPI](https://developer.spotify.com/)
+* [TailwindCSS](https://tailwindcss.com/)
 
 <p align="right">(<a href="#top">back to top</a>)</p>
 
@@ -120,14 +121,16 @@ Sound Garden is an application to make playlist currated for upcoming concerts o
 ![Wireframes](planning/wireframes.png)
 
 ## User Story
-![Userstory](planning/user%20story.png)
+![Userstory](planning/userStory.png)
 ## ERD
-![ERD](planning/ERD.png)
+![ERD](planning/ERD.jpeg)
 
 See the [open issues](https://github.com/helenamarkus14/soundgarden/issues) for a full list of proposed features (and known issues)
 
 
+## Future Features
 
+Have a Spotify player to stream music
 <!-- CONTRIBUTING -->
 <!-- ## Contributing
 
@@ -142,9 +145,6 @@ Don't forget to give the project a star! Thanks again!
 4. Push to the Branch (`git push origin feature/AmazingFeature`)
 5. Open a Pull Request -->
 
-<p align="right">(<a href="#top">back to top</a>)</p>
-
-
 
 Project Link: [https://github.com/helenamarkus14/soundgarden](https://github.com/helenamarkus14/soundgarden)
 
@@ -154,7 +154,13 @@ Project Link: [https://github.com/helenamarkus14/soundgarden](https://github.com
 
 
 <!-- MARKDOWN LINKS & IMAGES -->
-
+Created by:
+Helena Markus
 [linkedin-shield]: https://img.shields.io/badge/-LinkedIn-black.svg?style=for-the-badge&logo=linkedin&colorB=555
-[linkedin-url]: https://linkedin.com/in/helena-markus
+[linkedin-url]: https://linkedin.com/in/helena-markus 
+Denzel Samala
+[linkedin-shield]: https://img.shields.io/badge/-LinkedIn-black.svg?style=for-the-badge&logo=linkedin&colorB=555
+[linkedin-url]: https://www.linkedin.com/in/dsamala/
+
+
 <!-- [product-screenshot]: images/screenshot.png -->
