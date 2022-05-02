@@ -1,11 +1,18 @@
-import {NavLink} from 'react-router-dom';
-import {useState, useEffect} from 'react'
-import Login from '../NavUser';
+import {NavLink, useNavigate} from 'react-router-dom';
+import {useState} from 'react'
 import "./navbar.css"
 
 const NavBar = () => {
     const [navbarOpen, setNavbarOpen] = useState(false);
     const id = localStorage.getItem("id");
+    const token = localStorage.getItem("token");
+    const navigate = useNavigate();
+
+    const logOut = () => {
+      window.localStorage.removeItem("token");
+      window.localStorage.removeItem("id");
+      navigate('/logout');
+  }
 
     return (
     <>
@@ -71,9 +78,19 @@ const NavBar = () => {
                 </a>
               </li>
               <li className="nav-item">
-               <Login/>
+                {token ? 
+                <button
+                  className="px-3 py-2 flex hover:text-turquoise items-center text-xs uppercase font-bold leading-snug text-red hover:opacity-75"
+                  onClick={logOut} >
+                 <span className="ml-2">Log Out</span>
+                </button> : 
+                <NavLink
+                className="px-3 py-2 flex hover:text-turquoise items-center text-xs uppercase font-bold leading-snug text-red hover:opacity-75"
+                to={`/signin`} >
+                <span className="ml-2">Log In</span>
+                </NavLink>
+                  }
               </li>
-
             </ul>
           </div>
         </div>
@@ -81,13 +98,6 @@ const NavBar = () => {
     </>
   );
 }
-//     return(
-//         <header className='navbar'>
-//             <NavLink to="/" className='font-medium px-3 py-2 text-red rounded-lg hover:bg-red-100 hover:text-red'>Home</NavLink>
-//             <NavLink to="/concerts" className='navbarhome'>Concerts</NavLink>
-//             <NavLink to="/playlists" className='navbarhome'>Playlists</NavLink>
-//         </header>
-//     );
-// };
+
 
 export default NavBar;

@@ -15,14 +15,6 @@ function Login() {
     const [userDisplay, setUserDisplay] = useState("");
     const [userSpotifyURL, setUserSpotifyURL] = useState("");
 
-    const logout = () => {
-        setToken("");
-        setUserId("");
-        setUserImage("");
-        window.localStorage.removeItem("token");
-        window.localStorage.removeItem("id");
-    }
-
 
     const userInfoWrite = async () => {
         let data = {"display_name": userDisplay, "id": userId, "image_url": userImage, "spotify_url": userSpotifyURL}

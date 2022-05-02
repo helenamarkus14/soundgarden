@@ -19,6 +19,7 @@ import ConcertEdit from "./components/ConcertEdit";
 import PlaylistForm from "./components/PlaylistForm";
 import PlaylistEdit from "./components/PlaylistEdit";
 import DashboardPage from "./pages/DashboardPage"
+import LogOutPage from "./pages/LogOutPage";
 
 
 
@@ -43,6 +44,7 @@ function App() {
         <Route path="/concerts/new" element={<CreateConcert/>}/>
         <Route path="/users" element={<UsersPage/>}/>
         <Route path="/playlists/new" element={<CreatePlaylist/>}/>
+        <Route path="/logout" element={<LogOutPage/>}/>
 
     </Routes>
 
